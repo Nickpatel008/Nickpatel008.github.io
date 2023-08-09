@@ -155,3 +155,9 @@ function myFunction(e) {
 	document.getElementById("tooltip").style.left = (x - 150) + "px";
 	document.getElementById("tooltip").style.top = (y - 180) + "px";
 }
+
+new kursor({
+    type: 1,
+    removeDefaultCursor: true,
+    color: '#fff' 
+})
