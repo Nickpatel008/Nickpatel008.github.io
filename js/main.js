@@ -148,16 +148,69 @@
 
 }());
 
-
 function myFunction(e) {
-	var x = e.clientX;
-	var y = e.clientY;
+	var x = e.clientX - 90;
+	var y = e.clientY - 90;
 	document.getElementById("tooltip").style.left = x + "px";
 	document.getElementById("tooltip").style.top = y + "px";
 }
 
 new kursor({
-    type: 1,
-    removeDefaultCursor: true,
-    color: '#000' 
+	type: 1,
+	removeDefaultCursor: true,
+	color: '#000'
 })
+
+const defaults = {
+	spread: 360,
+	ticks: 50,
+	gravity: 0,
+	decay: 0.94,
+	startVelocity: 30,
+	shapes: ["star"],
+	colors: ["FFE400", "FFBD00", "E89400", "FFCA6C", "FDFFB8"],
+};
+
+function shoot() {
+	confetti({
+		...defaults,
+		particleCount: 40,
+		scalar: 1.2,
+		shapes: ["star"],
+	});
+
+	confetti({
+		...defaults,
+		particleCount: 10,
+		scalar: 0.75,
+		shapes: ["circle"],
+	});
+}
+
+setTimeout(shoot, 0);
+
+function shootEmojiAndUnicorns() {
+	confetti({
+	  ...defaults,
+	  particleCount: 30,
+	  scalar: 1.2,
+	  shapes: ["circle", "square"],
+	  colors: ["#a864fd", "#29cdff", "#78ff44", "#ff718d", "#fdff6a"],
+	});
+  
+	confetti({
+	  ...defaults,
+	  particleCount: 20,
+	  scalar: 2,
+	  shapes: ["text"],
+	  shapeOptions: {
+		text: {
+		  value: ["🦄", "🌈"],
+		},
+	  },
+	});
+}
+  
+function downloadResume() {
+	shootEmojiAndUnicorns()
+}
