@@ -1291,7 +1291,6 @@ input[type="text"] {
 }
 
 /*# sourceMappingURL=style.css.map */
-
 #tooltipBox {
 	border: 2px solid rgba(146, 146, 146, 0.43);
   border-style: dashed;
@@ -1307,6 +1306,8 @@ input[type="text"] {
 	top: 0;
 	left: 0;
   transition: .2s ease;
+  z-index: 9999;
+  white-space: nowrap;
 }
 #tooltipBox:hover #tooltip {
 	opacity: 1;
