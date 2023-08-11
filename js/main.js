@@ -212,5 +212,12 @@ function shootEmojiAndUnicorns() {
 }
   
 function downloadResume() {
+	const a = document.createElement('a')
+	let url = "Docs/myResume.pdf"
+	a.href = url
+	a.download = url.split('/').pop()
+	document.body.appendChild(a)
+	a.click()
+	document.body.removeChild(a)
 	shootEmojiAndUnicorns()
 }
