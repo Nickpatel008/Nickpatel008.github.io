@@ -213,7 +213,7 @@ function shootEmojiAndUnicorns() {
   
 function downloadResume() {
 	const a = document.createElement('a')
-	let url = "Docs/myResume.pdf"
+	let url = "Docs/Dhaval_Resume.pdf"
 	a.href = url
 	a.download = url.split('/').pop()
 	document.body.appendChild(a)
