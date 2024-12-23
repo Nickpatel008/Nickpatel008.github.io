@@ -191,26 +191,26 @@ setTimeout(shoot, 0);
 
 function shootEmojiAndUnicorns() {
 	confetti({
-	  ...defaults,
-	  particleCount: 30,
-	  scalar: 1.2,
-	  shapes: ["circle", "square"],
-	  colors: ["#a864fd", "#29cdff", "#78ff44", "#ff718d", "#fdff6a"],
+		...defaults,
+		particleCount: 30,
+		scalar: 1.2,
+		shapes: ["circle", "square"],
+		colors: ["#a864fd", "#29cdff", "#78ff44", "#ff718d", "#fdff6a"],
 	});
-  
+
 	confetti({
-	  ...defaults,
-	  particleCount: 20,
-	  scalar: 2,
-	  shapes: ["text"],
-	  shapeOptions: {
-		text: {
-		  value: ["🦄", "🌈"],
+		...defaults,
+		particleCount: 20,
+		scalar: 2,
+		shapes: ["text"],
+		shapeOptions: {
+			text: {
+				value: ["🦄", "🌈"],
+			},
 		},
-	  },
 	});
 }
-  
+
 function downloadResume() {
 	const a = document.createElement('a')
 	let url = "Docs/Dhaval_Resume.pdf"
@@ -220,4 +220,8 @@ function downloadResume() {
 	a.click()
 	document.body.removeChild(a)
 	shootEmojiAndUnicorns()
+}
+
+function myFun() {
+	alert('This feature not available.')
 }
