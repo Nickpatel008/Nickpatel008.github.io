@@ -222,6 +222,36 @@ function downloadResume() {
 	shootEmojiAndUnicorns()
 }
 
-function myFun() {
-	alert('This feature not available.')
+function myFun(event) {
+	event.preventDefault();
+	var fname = document.getElementById('fname').value;
+	var lname = document.getElementById('lname').value;
+	var email = document.getElementById('email').value;
+	var subject = document.getElementById('subject').value;
+	var message = document.getElementById('message').value;
+	
+	if (!fname || !email || !message) {
+		alert('Please fill in all required fields (First Name, Email, and Message).');
+		return;
+	}
+	
+	// Create mailto link
+	var mailtoLink = 'mailto:dpatel0254@gmail.com?subject=' + encodeURIComponent(subject || 'Contact from Portfolio') + '&body=' + encodeURIComponent(
+		'Name: ' + fname + ' ' + lname + '\n' +
+		'Email: ' + email + '\n\n' +
+		'Message:\n' + message
+	);
+	
+	window.location.href = mailtoLink;
+	
+	// Show success message
+	setTimeout(function() {
+		alert('Thank you for your message! Your email client should open shortly.');
+		// Reset form
+		document.getElementById('fname').value = '';
+		document.getElementById('lname').value = '';
+		document.getElementById('email').value = '';
+		document.getElementById('subject').value = '';
+		document.getElementById('message').value = '';
+	}, 100);
 }
