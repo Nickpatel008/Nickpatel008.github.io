@@ -1,768 +1,576 @@
-<!DOCTYPE HTML>
-<html>
-
+<!DOCTYPE html>
+<html lang="en">
 <head>
-	<meta charset="utf-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title> Dev Nick | HOME </title>
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<meta name="description" content="Dev Nick - Web Developer and Software Engineer specializing in Node.js, React, AWS, and modern web technologies. Portfolio of Dhaval J. Patel." />
-	<meta name="keywords"
-		content="web developer, software engineer, nodejs, reactjs, aws, full stack developer, javascript, portfolio, dhaval patel, dev nick" />
-	<meta name="author" content="Dhaval J. Patel" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dhaval Patel | Full Stack Developer &amp; Project Lead &middot; Agentic AI</title>
+  <meta name="description" content="Full Stack Developer and Project Lead with 3+ years experience engineering enterprise ERPs, multi-channel commerce systems, and deterministic Agentic AI workflows with Next.js, Node.js, and PostgreSQL.">
+  <meta name="keywords" content="Dhaval Patel, Full Stack Developer, SDE II, Project Lead, Agentic AI, Node.js, TypeScript, PostgreSQL, Next.js, JMeter, ERP">
+  <meta name="author" content="Dhaval Patel">
 
-	<!-- 
-	//////////////////////////////////////////////////////
+  <!-- Open Graph -->
+  <meta property="og:title" content="Dhaval Patel | Full Stack Developer &amp; Project Lead">
+  <meta property="og:description" content="Engineering high-scale enterprise ERPs, database performance tuning, and deterministic Agentic AI workflows.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://nickpatel008.github.io/">
+  <meta name="theme-color" content="#F4F2EC" id="meta-theme-color">
 
-	FREE HTML5 TEMPLATE 
-	DESIGNED & DEVELOPED by FreeHTML5.co
-		
-	Website: 		http://freehtml5.co/
-	Email: 			info@freehtml5.co
-	Twitter: 		http://twitter.com/fh5co
-	Facebook: 		https://www.facebook.com/fh5co
+  <!-- Immediate Theme Initialization (Prevents FOUC) -->
+  <script>
+    (function() {
+      try {
+        var t = localStorage.getItem('portfolio-theme');
+        if (t === 'dark' || (!t && document.documentElement.getAttribute('data-theme') === 'dark')) {
+          document.documentElement.setAttribute('data-theme', 'dark');
+        } else {
+          document.documentElement.setAttribute('data-theme', 'light');
+        }
+      } catch(e) {}
+    })();
+  </script>
 
-	//////////////////////////////////////////////////////
-	 -->
+  <!-- Google Fonts: Inter (Display/Body) & JetBrains Mono (Specs/Code) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 
-	<!-- Facebook and Twitter integration -->
-	<meta property="og:title" content="Dev Nick | Web Developer & Software Engineer" />
-	<meta property="og:image" content="https://nickpatel008.github.io/images/cover_bg_3.jpg" />
-	<meta property="og:url" content="https://nickpatel008.github.io/" />
-	<meta property="og:site_name" content="Dev Nick Portfolio" />
-	<meta property="og:description" content="Web Developer and Software Engineer specializing in Node.js, React, AWS, and modern web technologies." />
-	<meta name="twitter:title" content="Dev Nick | Web Developer & Software Engineer" />
-	<meta name="twitter:image" content="https://nickpatel008.github.io/images/cover_bg_3.jpg" />
-	<meta name="twitter:url" content="https://nickpatel008.github.io/" />
-	<meta name="twitter:card" content="summary_large_image" />
-
-	<link href="https://fonts.googleapis.com/css?family=Space+Mono" rel="stylesheet">
-	<link href="https://fonts.googleapis.com/css?family=Kaushan+Script" rel="stylesheet">
-
-	<!-- Animate.css -->
-	<link rel="stylesheet" href="css/animate.css">
-	<!-- Icomoon Icon Fonts-->
-	<link rel="stylesheet" href="css/icomoon.css">
-	<!-- Bootstrap  -->
-	<link rel="stylesheet" href="css/bootstrap.css">
-
-	<!-- Theme style  -->
-	<link rel="stylesheet" href="css/style.css">
-
-	<!-- Modernizr JS -->
-	<script src="js/modernizr-2.6.2.min.js"></script>
-	<!-- FOR IE9 below -->
-	<!--[if lt IE 9]>
-	<script src="js/respond.min.js"></script>
-	<![endif]-->
-
-	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/kursor@0.1.6/dist/kursor.min.css">
-
-	<script src="https://cdn.jsdelivr.net/npm/kursor@0.0.14/dist/kursor.js"></script>
-
-	<script src="https://cdn.jsdelivr.net/npm/tsparticles-confetti@2.12.0/tsparticles.confetti.bundle.min.js"></script>
-
+  <!-- Core Design System Stylesheet -->
+  <link rel="stylesheet" href="css/style.css">
 </head>
-
 <body>
 
-	<div class="fh5co-loader"></div>
+  <!-- Accessible Skip Navigation Link (WCAG 2.4.1) -->
+  <a href="#overview" class="skip-link">Skip to main content</a>
 
-	<div id="page">
-		<header id="fh5co-header" class="fh5co-cover js-fullheight" role="banner"
-			style="background-image:url(images/cover_bg_3.jpg);" data-stellar-background-ratio="0.5">
-			<div class="overlay"></div>
-			<div class="container">
-				<div class="row">
-					<div class="col-md-8 col-md-offset-2 text-center">
-						<div class="display-t js-fullheight">
-							<div class="display-tc js-fullheight animate-box" data-animate-effect="fadeIn">
-								<div class="profile-thumb"
-									style="background: url(https://differenzsystem.keka.com/files/fb5bf3bb-28f7-4e08-8d8b-9c6499781f69/200x200/profileimage/769cc437e6ba40c7898789fb9e60862c.jpg?1691413421232);"
-									aria-label="Dev Nick Profile Picture">
-								</div>
-								<h1><span> Dev Nick </span></h1>
-								<h3><span>Web Developer / Gamer</span></h3>
-								<p>
-								<ul class="fh5co-social-icons">
-									<li><a href="https://github.com/Nickpatel008" target="_blank" rel="noopener noreferrer" title="GitHub"><i class="icon-github"></i></a></li>
-									<li><a href="https://www.linkedin.com/in/dhaval-patel-0254" target="_blank" rel="noopener noreferrer" title="LinkedIn"><i class="icon-linkedin2"></i></a></li>
-									<li><a href="mailto:dpatel0254@gmail.com" title="Email"><i class="icon-mail"></i></a></li>
-								</ul>
-								</p>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</header>
+  <div class="layout-container">
+    <div class="layout-wrapper">
 
-		<div id="fh5co-about" class="animate-box">
-			<div class="container">
-				<div class="row">
-					<div class="col-md-8 col-md-offset-2 text-center fh5co-heading">
-						<h2>About Me</h2>
-					</div>
-				</div>
-				<div class="row">
-					<div class="col-md-4">
-						<ul class="info">
-							<li><span class="first-block">Full Name:</span><span class="second-block"> Dhaval J. Patel
-								</span></li>
-							<li><span class="first-block">Phone:</span><span class="second-block"> +91 87583 68058
-								</span></li>
-							<li><span class="first-block">Email:</span><span class="second-block"> dpatel0254@gmail.com
-								</span></li>
-							<li><span class="first-block">Website:</span><span class="second-block">
-									<a href="https://nickpatel008.github.io/" target="_blank"> Explore Now </a></span>
-							</li>
-							<li><span class="first-block">Address:</span><span
-									class="second-block">Surat,Gujarat,India</span></li>
-						</ul>
-					</div>
-					<div class="col-md-8">
-						<h2>Hello There!</h2>
-						<p>As a dedicated software engineer and web developer, I am passionate about crafting innovative
-							solutions using cutting-edge technologies. With extensive experience in Node.js development
-							and proficiency in AWS services, I strive to create high-performing web applications that
-							meet the demands of today's digital landscape. </p>
-						<p> In addition to my backend expertise, my skills extend to cloud computing with Amazon Web
-							Services (AWS). By leveraging various AWS services such as EC2 for virtual servers, S3 for
-							storage, and Lambda for serverless functions, I have deployed highly available and resilient
-							applications on the cloud. </p>
-						<p>
-						<ul class="fh5co-social-icons">
-							<li><a href="https://github.com/Nickpatel008" target="_blank" rel="noopener noreferrer" title="GitHub"><i class="icon-github"></i></a></li>
-							<li><a href="https://www.linkedin.com/in/dhaval-patel-0254" target="_blank" rel="noopener noreferrer" title="LinkedIn"><i class="icon-linkedin2"></i></a></li>
-							<li><a href="mailto:dpatel0254@gmail.com" title="Email"><i class="icon-mail"></i></a></li>
-						</ul>
-						</p>
-					</div>
-				</div>
-			</div>
-		</div>
+      <!-- ===================================================================
+           STICKY LEFT SIDEBAR (Identity, Telemetry, Navigation, Primary Actions)
+           =================================================================== -->
+      <aside class="sidebar-left" aria-label="Portfolio Identity and Navigation">
+        <div>
+          <!-- Status Beacon & Theme Switcher -->
+          <div class="sidebar-top-bar">
+            <div class="status-pill">
+              <span class="status-dot"></span>
+              <span>AVAILABLE FOR SDE II / PROJECT LEAD</span>
+            </div>
+            <button type="button" id="theme-toggle" class="theme-toggle" aria-label="Toggle visual theme">
+              <span class="theme-toggle-icon" aria-hidden="true">&#9789;</span>
+              <span class="theme-toggle-text">Dark</span>
+            </button>
+          </div>
 
-		<div id="fh5co-resume" class="fh5co-bg-color">
-			<div class="container">
-				<div id="tooltipBox" class="row animate-box" onmousemove="myFunction(event)" onclick="downloadResume()">
-					<div id="tooltip"> grab it </div>
-					<div class="col-md-8 col-md-offset-2 text-center fh5co-heading">
-						<h2>My Resume</h2>
-						<a href="Docs/Dhaval_Resume.pdf" download> Click anywhere to download</a>
-					</div>
-				</div>
-				<div class="row">
-					<div class="col-md-12 col-md-offset-0">
-						<ul class="timeline">
-							<li class="timeline-heading text-center animate-box">
-								<div>
-									<h3>Work Experience</h3>
-								</div>
-							</li>
-							<!-- <li class="animate-box timeline-unverted">
-								<div class="timeline-badge"><i class="icon-suitcase"></i></div>
-								<div class="timeline-panel">
-									<div class="timeline-heading">
-										<h3 class="timeline-title">Senior Developer</h3>
-										<span class="company">Company Name - 2016 - Current</span>
-									</div>
-									<div class="timeline-body">
-										<p>Far far away, behind the word mountains, far from the countries Vokalia and
-											Consonantia, there live the blind texts.</p>
-									</div>
-								</div>
-							</li> -->
-							<li class="timeline-box animate-box timeline-unverted">
-								<div class="timeline-badge"><i class="icon-suitcase"></i></div>
-								<div class="timeline-panel">
-									<div class="timeline-heading">
-										<h3 class="timeline-title">Junior Developer</h3>
-										<span class="company">Differenz System India - 2022 - 2023</span>
-									</div>
-									<p>
-										Junior Developer? More like Bug Detective! 🔍🐞
-										2022-2023: The year I mastered the art of Googling! 🖥️📚
-									</p>
-									<p>
-										Differenz System India gave me a 'differenz' perspective on coding and
-										coffee! ☕💻
-									</p>
-								</div>
-							</li>
-							<!-- <li class="animate-box timeline-unverted">
-							<div class="timeline-badge"><i class="icon-suitcase"></i></div>
-							<div class="timeline-panel">
-								<div class="timeline-heading">
-									<h3 class="timeline-title">UI/UX Designer</h3>
-									<span class="company">Company Name - 2010 - 2012</span>
-								</div>
-								<div class="timeline-body">
-									<p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
-								</div>
-							</div>
-						</li> -->
+          <h1 class="display-name">Dhaval Patel</h1>
+          <h2 class="role-title">
+            <span>Full Stack Developer</span>
+            <span class="role-sep">&middot;</span>
+            <span>SDE II / Project Lead</span>
+            <span class="role-sep">&middot;</span>
+            <span>Agentic AI</span>
+          </h2>
 
-							<br>
-							<li class="timeline-heading text-center animate-box">
-								<div>
-									<h3>Education</h3>
-								</div>
-							</li>
-							<li class="timeline-inverted animate-box">
-								<div class="timeline-badge"><i class="icon-graduation-cap"></i></div>
-								<div class="timeline-panel">
-									<div class="timeline-heading">
-										<h3 class="timeline-title">Masters Degree</h3>
-										<span class="company">Veer Narmad South Gujarat University - 2020 - 2022</span>
-									</div>
-									<div class="timeline-body">
-										<p>
-											My Master's degree wasn’t just about books—it was about late-night coding,
-											group projects that turned into solo ones, and learning how to smile through
-											it all. 🎓💻✨
-										</p>
-									</div>
-								</div>
-							</li>
-							<li class="animate-box timeline-unverted">
-								<div class="timeline-badge"><i class="icon-graduation-cap"></i></div>
-								<div class="timeline-panel">
-									<div class="timeline-heading">
-										<h3 class="timeline-title">Bachelors Degree</h3>
-										<span class="company">Shree Uttar Gujarat BBA and BCA College - 2017 -
-											2020</span>
-									</div>
-									<div class="timeline-body">
-										<p>
-											Bachelor’s degree days were like a roller coaster: thrilling at times,
-											terrifying during exams, and worth it for the snacks during breaks. 🍕📚🎢
-										</p>
-									</div>
-								</div>
-							</li>
-							<!-- <li class="timeline-inverted animate-box">
-								<div class="timeline-badge"><i class="icon-graduation-cap"></i></div>
-								<div class="timeline-panel">
-									<div class="timeline-heading">
-										<h3 class="timeline-title"> Higher Secondary Certificate (HSC) </h3>
-										<span class="company">G. & G. V. Kadiwala & M.V. Bunki Sarvajanik High School -
-											2017</span>
-									</div>
-									<div class="timeline-body">
-										<p>Far far away, behind the word mountains, they live in Bookmarksgrove right at
-											the coast of the Semantics, a large language ocean.</p>
-									</div>
-								</div>
-							</li>
-							<li class="animate-box timeline-unverted">
-								<div class="timeline-badge"><i class="icon-graduation-cap"></i></div>
-								<div class="timeline-panel">
-									<div class="timeline-heading">
-										<h3 class="timeline-title"> Secondary School Certificate (SSC) </h3>
-										<span class="company">G. & G. V. Kadiwala & M.V. Bunki Sarvajanik High School -
-											2015</span>
-									</div>
-									<div class="timeline-body">
-										<p>Far far away, behind the word mountains, far from the countries Vokalia and
-											Consonantia, there live the blind texts.</p>
-									</div>
-								</div>
-							</li> -->
-						</ul>
-					</div>
-				</div>
-			</div>
-		</div>
+          <p class="intro-lead">
+            Architecting high-scale enterprise ERPs, multi-channel commerce sync engines, and deterministic Agentic AI workflows with Next.js, Node.js, and PostgreSQL.
+          </p>
 
-		<div id="fh5co-features" class="animate-box">
-			<div class="container">
-				<div class="services-padding">
-					<div class="row">
-						<div class="col-md-8 col-md-offset-2 text-center fh5co-heading">
-							<h2>My Services</h2>
-						</div>
-					</div>
-					<div class="row">
-						<div class="col-md-4 text-center">
-							<div class="feature-left">
-								<span class="icon">
-									<i class="icon-make-group"></i>
-								</span>
-								<div class="feature-copy">
-									<h3>API Development and Integration</h3>
-									<p>Build and integrate robust RESTful and GraphQL APIs to connect your applications
-										seamlessly.</p>
-								</div>
-							</div>
-						</div>
+          <!-- Verified Telemetry Grid -->
+          <div class="telemetry-grid" aria-label="Key Production Telemetry">
+            <div class="telemetry-cell">
+              <div class="telemetry-val">3+</div>
+              <div class="telemetry-lbl">Years Experience</div>
+            </div>
+            <div class="telemetry-cell">
+              <div class="telemetry-val">2</div>
+              <div class="telemetry-lbl">Enterprise ERPs</div>
+            </div>
+            <div class="telemetry-cell">
+              <div class="telemetry-val">200+</div>
+              <div class="telemetry-lbl">Endpoints Tested</div>
+            </div>
+            <div class="telemetry-cell">
+              <div class="telemetry-val">4</div>
+              <div class="telemetry-lbl">Marketplace Syncs</div>
+            </div>
+          </div>
 
-						<div class="col-md-4 text-center">
-							<div class="feature-left">
-								<span class="icon">
-									<i class="icon-database"></i>
-								</span>
-								<div class="feature-copy">
-									<h3>Server/Database Management</h3>
-									<p>Efficiently manage and optimize servers and databases to ensure high performance
-										and scalability.</p>
-								</div>
-							</div>
-						</div>
-						<div class="col-md-4 text-center">
-							<div class="feature-left">
-								<span class="icon">
-									<i class="icon-search"></i>
-								</span>
-								<div class="feature-copy">
-									<h3>Analytics</h3>
-									<p>Provide insightful analytics solutions to help you make data-driven decisions and
-										achieve your goals.</p>
-								</div>
-							</div>
-						</div>
-					</div>
+          <!-- Editorial In-Page Navigation Index (Desktop Only) -->
+          <nav class="sidebar-nav" aria-label="Section Navigation">
+            <ul class="nav-index">
+              <li class="nav-item">
+                <a href="#overview" class="nav-anchor active">
+                  <span class="nav-rule"></span>
+                  <span>01 // Overview &amp; Philosophy</span>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="#case-studies" class="nav-anchor">
+                  <span class="nav-rule"></span>
+                  <span>02 // Enterprise Case Studies</span>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="#ai-perf" class="nav-anchor">
+                  <span class="nav-rule"></span>
+                  <span>03 // Agentic AI &amp; Performance</span>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="#experience" class="nav-anchor">
+                  <span class="nav-rule"></span>
+                  <span>04 // Career Chronology</span>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="#matrix" class="nav-anchor">
+                  <span class="nav-rule"></span>
+                  <span>05 // Technical Matrix</span>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="#credentials" class="nav-anchor">
+                  <span class="nav-rule"></span>
+                  <span>06 // Credentials &amp; Education</span>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="#contact" class="nav-anchor">
+                  <span class="nav-rule"></span>
+                  <span>07 // Communication Console</span>
+                </a>
+              </li>
+            </ul>
+          </nav>
+        </div>
 
-					<div class="row">
-						<div class="col-md-4 text-center">
-							<div class="feature-left">
-								<span class="icon">
-									<i class="icon-bargraph"></i>
-								</span>
-								<div class="feature-copy">
-									<h3>Web Development</h3>
-									<p>Create modern, responsive, and user-friendly websites tailored to your business
-										needs.</p>
-								</div>
-							</div>
-						</div>
+        <!-- Primary Actions & Direct Links -->
+        <div>
+          <div class="action-strip">
+            <a href="Docs/Dhaval_Resume.pdf" download class="btn-primary">Download Resume (PDF)</a>
+            <button type="button" id="btn-copy-email" class="btn-secondary">Copy Email</button>
+          </div>
 
-						<div class="col-md-4 text-center">
-							<div class="feature-left">
-								<span class="icon">
-									<i class="icon-amazon"></i>
-								</span>
-								<div class="feature-copy">
-									<h3>Deployment on Cloud Platforms (AWS)</h3>
-									<p>Deploy applications on cloud platforms like AWS for scalability, reliability, and
-										cost efficiency.</p>
-								</div>
-							</div>
-						</div>
-						<div class="col-md-4 text-center">
-							<div class="feature-left">
-								<span class="icon">
-									<i class="icon-chat"></i>
-								</span>
-								<div class="feature-copy">
-									<h3>Support</h3>
-									<p>Offer ongoing technical support and maintenance to keep your applications running
-										smoothly.</p>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
+          <div class="external-links">
+            <a href="https://github.com/Nickpatel008" target="_blank" rel="noopener noreferrer" class="link-subtle">GitHub ↗</a>
+            <a href="https://www.linkedin.com/in/dhaval-patel-0254" target="_blank" rel="noopener noreferrer" class="link-subtle">LinkedIn ↗</a>
+            <a href="mailto:dpatel0254@gmail.com" class="link-subtle">Direct Email ↗</a>
+          </div>
+        </div>
+      </aside>
 
-		<div id="fh5co-skills" class="animate-box">
-			<div class="container">
-				<div class="row">
-					<div class="col-md-8 col-md-offset-2 text-center fh5co-heading">
-						<h2>Skills</h2>
-					</div>
-				</div>
-				<div class="row row-pb-md">
-					<div class="col-md-3 col-sm-6 col-xs-12 text-center">
-						<div class="chart" data-percent="100">
-							<span>
-								<strong>NODE JS</strong>
-								<!-- 91% -->
-							</span>
-						</div>
-					</div>
-					<div class="col-md-3 col-sm-6 col-xs-12 text-center">
-						<div class="chart" data-percent="100">
-							<span><strong>
-									Express JS</strong>
-								<!-- 91% -->
-							</span>
-						</div>
-					</div>
-					<div class="col-md-3 col-sm-6 col-xs-12 text-center">
-						<div class="chart" data-percent="100">
-							<span><strong>
-									MySQL</strong>
-								<!-- 85% -->
-							</span>
-						</div>
-					</div>
-					<div class="col-md-3 col-sm-6 col-xs-12 text-center">
-						<div class="chart" data-percent="100">
-							<span><strong>
-									ReactJS</strong>
-								<!-- 70% -->
-							</span>
-						</div>
-					</div>
-					<div class="col-md-3 col-sm-6 col-xs-12 text-center">
-						<div class="chart" data-percent="100">
-							<span><strong>
-									Bootstrap</strong>
-								<!-- 94% -->
-							</span>
-						</div>
-					</div>
-					<div class="col-md-3 col-sm-6 col-xs-12 text-center">
-						<div class="chart" data-percent="100">
-							<span><strong>
-									HTML5/CSS3</strong>
-								<!-- 95% -->
-							</span>
-						</div>
-					</div>
-					<!-- <div class="col-md-3 col-sm-6 col-xs-12 text-center">
-					<div class="chart" data-percent="93"><span><strong>CSS3</strong>93%</span></div>
-				</div> -->
-					<div class="col-md-3 col-sm-6 col-xs-12 text-center">
-						<div class="chart" data-percent="100">
-							<span><strong>
-									JS/jQuery</strong>
-								<!-- 90% -->
-							</span>
-						</div>
-					</div>
-					<!-- <div class="col-md-3 col-sm-6 col-xs-12 text-center">
-						<div class="chart" data-percent="100"><span><strong>PHP</strong>89%</span></div>
-					</div> -->
-					<div class="col-md-3 col-sm-6 col-xs-12 text-center">
-						<div class="chart" data-percent="100">
-							<span><strong>
-									AWS</strong>
-								<!-- 80% -->
-							</span>
-						</div>
-					</div>
-					<!-- <div class="col-md-3 col-sm-6 col-xs-12 text-center">
-					<div class="chart" data-percent="90"><span><strong>Java</strong>90%</span></div>
-				</div> -->
-				</div>
-				<!-- <div class="row">
-				<div class="col-md-6">
-					<div class="progress-wrap">
-						<h3><span class="name-left">HTML5/CSS3</span><span class="value-right">95%</span></h3>
-						<div class="progress">
-						  <div class="progress-bar progress-bar-1 progress-bar-striped active" role="progressbar"
-						  aria-valuenow="90" aria-valuemin="0" aria-valuemax="100" style="width:90%">
-						  </div>
-						</div>
-					</div>
-					<div class="progress-wrap">
-						<h3><span class="name-left">WordPress</span><span class="value-right">90%</span></h3>
-						<div class="progress">
-						  <div class="progress-bar progress-bar-2 progress-bar-striped active" role="progressbar"
-						  aria-valuenow="90" aria-valuemin="0" aria-valuemax="100" style="width:90%">
-						  </div>
-						</div>
-					</div>
-					<div class="progress-wrap">
-						<h3><span class="name-left">PHP</span><span class="value-right">80%</span></h3>
-						<div class="progress">
-						  <div class="progress-bar progress-bar-3 progress-bar-striped active" role="progressbar"
-						  aria-valuenow="80" aria-valuemin="0" aria-valuemax="100" style="width:80%">
-						  </div>
-						</div>
-					</div>
-					<div class="progress-wrap">
-						<h3><span class="name-left">Java</span><span class="value-right">85%</span></h3>
-						<div class="progress">
-						  <div class="progress-bar progress-bar-4 progress-bar-striped active" role="progressbar"
-						  aria-valuenow="85" aria-valuemin="0" aria-valuemax="100" style="width:85%">
-						  </div>
-						</div>
-					</div>
-				</div>
-				<div class="col-md-6">
-					<div class="progress-wrap">
-						<h3><span class="name-left">Design</span><span class="value-right">100%</span></h3>
-						<div class="progress">
-						  <div class="progress-bar progress-bar-5 progress-bar-striped active" role="progressbar"
-						  aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width:100%">
-						  </div>
-						</div>
-					</div>
-					<div class="progress-wrap">
-						<h3><span class="name-left">Ruby</span><span class="value-right">70%</span></h3>
-						<div class="progress">
-						  <div class="progress-bar progress-bar-striped active" role="progressbar"
-						  aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" style="width:70%">
-						  </div>
-						</div>
-					</div>
-					<div class="progress-wrap">
-						<h3><span class="name-left">Python</span><span class="value-right">85%</span></h3>
-						<div class="progress">
-						  <div class="progress-bar progress-bar-1 progress-bar-striped active" role="progressbar"
-						  aria-valuenow="85" aria-valuemin="0" aria-valuemax="100" style="width:85%">
-						  </div>
-						</div>
-					</div>
-					<div class="progress-wrap">
-						<h3><span class="name-left">jQuery</span><span class="value-right">75%</span></h3>
-						<div class="progress">
-						  <div class="progress-bar progress-bar-3 progress-bar-striped active" role="progressbar"
-						  aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width:75%">
-						  </div>
-						</div>
-					</div>
-				</div>
-			</div> -->
-			</div>
-		</div>
+      <!-- ===================================================================
+           SCROLLABLE RIGHT MAIN STREAM (Technical Case Studies, Lab, Chronology)
+           =================================================================== -->
+      <main class="content-right">
 
-		<div id="fh5co-work" class="fh5co-bg-dark">
-			<div class="container">
-				<div class="row animate-box">
-					<div class="col-md-8 col-md-offset-2 text-center fh5co-heading">
-						<h2>Work</h2>
-					</div>
-				</div>
-				<div class="row">
-					<div class="col-md-3 text-center col-padding animate-box">
-						<a href="https://github.com/Nickpatel008/DNS_webclone" target="_blank" class="work"
-							style="background-image: url(https://images.unsplash.com/photo-1560732488-6b0df240254a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=870&q=80);">
-							<div class="desc">
-								<h3> DNS Web_Clone (Cloudflare) </h3>
-								<span> HTML/CSS/JS </span>
-							</div>
-						</a>
-					</div>
-					<div class="col-md-3 text-center col-padding animate-box">
-						<a href="https://github.com/Nickpatel008/mouse_auto_move" target="_blank" class="work"
-							style="background-image: url(https://images.unsplash.com/photo-1526379095098-d400fd0bf935?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1032&q=80);">
-							<div class="desc">
-								<h3> Auto Move Mouse </h3>
-								<span> Python </span>
-							</div>
-						</a>
-					</div>
-					<div class="col-md-3 text-center col-padding animate-box">
-						<a href="https://github.com/Nickpatel008/Webfolio" target="_blank" class="work"
-							style="background-image: url(https://plus.unsplash.com/premium_photo-1683120963435-6f9355d4a776?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=363&q=80);">
-							<div class="desc">
-								<h3>Webfolio</h3>
-								<span> AI/HTML/CSS/Bootstrap </span>
-							</div>
-						</a>
-					</div>
-					<div class="col-md-3 text-center col-padding animate-box">
-						<a href="https://github.com/Nickpatel008/ChatBot" target="_blank" class="work"
-							style="background-image: url(https://images.unsplash.com/photo-1684487747720-1ba29cda82f8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1032&q=80);">
-							<div class="desc">
-								<h3>Chat Bot</h3>
-								<span>NodeJS/ReactJS</span>
-							</div>
-						</a>
-					</div>
-					<!-- <div class="col-md-3 text-center col-padding animate-box">
-					<a href="#" class="work" style="background-image: url(images/portfolio-5.jpg);">
-						<div class="desc">
-							<h3>Project Name</h3>
-							<span>Website</span>
-						</div>
-					</a>
-				</div>
-				<div class="col-md-3 text-center col-padding animate-box">
-					<a href="#" class="work" style="background-image: url(images/portfolio-6.jpg);">
-						<div class="desc">
-							<h3>Project Name</h3>
-							<span>Illustration</span>
-						</div>
-					</a>
-				</div>
-				<div class="col-md-3 text-center col-padding animate-box">
-					<a href="#" class="work" style="background-image: url(images/portfolio-7.jpg);">
-						<div class="desc">
-							<h3>Project Name</h3>
-							<span>Brading</span>
-						</div>
-					</a>
-				</div>
-				<div class="col-md-3 text-center col-padding animate-box">
-					<a href="#" class="work" style="background-image: url(images/portfolio-8.jpg);">
-						<div class="desc">
-							<h3>Project Name</h3>
-							<span>Illustration</span>
-						</div>
-					</a>
-				</div> -->
-				</div>
-			</div>
-		</div>
+        <!-- 01 // OVERVIEW & PHILOSOPHY -->
+        <section id="overview" class="section-content">
+          <header class="section-header">
+            <span class="section-num">01.</span>
+            <h3 class="section-title">Overview &amp; Philosophy</h3>
+          </header>
 
-		<div id="fh5co-blog">
-			<div class="container">
-				<div class="row animate-box">
-					<div class="col-md-8 col-md-offset-2 text-center fh5co-heading">
-						<h2>Post on Medium</h2>
-					</div>
-				</div>
-				<div class="row animate-box">
-					<div class="col-lg-12 text-center">
-						<h2> "Coming Soon: Unleashing my software development expertise and insights on 'Post on Medium'
-							- stay tuned for enlightening articles that will ignite your coding journey with a spark of
-							inspiration! 🚀" </h2>
-					</div>
-				</div>
+          <div class="card-desc" style="font-size: 1rem; line-height: 1.7;">
+            <p style="margin-bottom: var(--space-4);">
+              I am a Full Stack Developer and Project Lead with over 3 years of building mission-critical web applications in <strong>React, Next.js, Node.js, TypeScript, and PostgreSQL</strong>, centered largely on enterprise ERPs, business intelligence (BI), and high-throughput e-commerce.
+            </p>
+            <p style="margin-bottom: var(--space-4);">
+              At Sarvadhi Solutions, I led two end-to-end enterprise ERP systems. My responsibilities bridged technical architecture and operational delivery: planning modules with the Product Manager, decomposing complex business logic across development squads, conducting strict code reviews, and orchestrating zero-downtime UAT releases.
+            </p>
+            <p>
+              I pair traditional backend discipline (PostgreSQL connection pool sizing, PM2 cluster worker limits, and Apache JMeter stress testing) with modern <strong>Agentic AI workflows</strong>. I use Claude Code daily, authoring deterministic rule files (<code style="font-family: var(--font-mono); font-size: 0.8125rem;">.clauderc</code>) to enforce architecture boundaries, standardize PR reviews, and explore autonomous security checks directly inside CI/CD pipelines.
+            </p>
+          </div>
+        </section>
 
-				<!-- <div class="row ">
-				<div class="col-md-4">
-					<div class="fh5co-blog animate-box">
-						<a href="#" class="blog-bg" style="background-image: url(images/portfolio-1.jpg);"></a>
-						<div class="blog-text">
-							<span class="posted_on">Mar. 15th 2016</span>
-							<h3><a href="#">Photoshoot On The Street</a></h3>
-							<p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
-							<ul class="stuff">
-								<li><i class="icon-heart2"></i>249</li>
-								<li><i class="icon-eye2"></i>308</li>
-								<li><a href="#">Read More<i class="icon-arrow-right22"></i></a></li>
-							</ul>
-						</div> 
-					</div>
-				</div>
-				<div class="col-md-4">
-					<div class="fh5co-blog animate-box">
-						<a href="#" class="blog-bg" style="background-image: url(images/portfolio-2.jpg);"></a>
-						<div class="blog-text">
-							<span class="posted_on">Mar. 15th 2016</span>
-							<h3><a href="#">Surfing at Philippines</a></h3>
-							<p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
-							<ul class="stuff">
-								<li><i class="icon-heart2"></i>249</li>
-								<li><i class="icon-eye2"></i>308</li>
-								<li><a href="#">Read More<i class="icon-arrow-right22"></i></a></li>
-							</ul>
-						</div> 
-					</div>
-				</div>
-				<div class="col-md-4">
-					<div class="fh5co-blog animate-box">
-						<a href="#" class="blog-bg" style="background-image: url(images/portfolio-3.jpg);"></a>
-						<div class="blog-text">
-							<span class="posted_on">Mar. 15th 2016</span>
-							<h3><a href="#">Capture Living On Uderwater</a></h3>
-							<p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
-							<ul class="stuff">
-								<li><i class="icon-heart2"></i>249</li>
-								<li><i class="icon-eye2"></i>308</li>
-								<li><a href="#">Read More<i class="icon-arrow-right22"></i></a></li>
-							</ul>
-						</div> 
-					</div>
-				</div>
-			</div> -->
-			</div>
-		</div>
+        <!-- 02 // ENTERPRISE CASE STUDIES -->
+        <section id="case-studies" class="section-content">
+          <header class="section-header">
+            <span class="section-num">02.</span>
+            <h3 class="section-title">Enterprise Case Studies</h3>
+          </header>
 
-		<div id="fh5co-started" class="fh5co-bg-dark">
-			<div class="overlay"></div>
-			<div class="container">
-				<div class="row animate-box">
-					<div class="col-md-8 col-md-offset-2 text-center fh5co-heading">
-						<h2>Hire Me!</h2>
-						<p>I'm available for freelance work and full-time opportunities. Let's collaborate to bring your ideas to life with cutting-edge web technologies and innovative solutions.</p>
-						<p><a href="#fh5co-consult" class="btn btn-default btn-lg">Contact Me</a></p>
-					</div>
-				</div>
-			</div>
-		</div>
+          <!-- Case Study 1 -->
+          <article class="case-study-card">
+            <div class="card-eyebrow">
+              <span class="card-category">Enterprise Manufacturing &bull; Multi-Channel BI</span>
+              <span class="card-role-tag">Project Lead</span>
+            </div>
+            <h4 class="card-heading">
+              Watch Assembly &amp; Multi-Channel E-Commerce ERP
+            </h4>
+            <p class="card-desc">
+              Comprehensive manufacturing and distribution ERP managing component purchasing, receiving inspection, assembly line staging, quality control checkpoints, stock ledger allocations, sales orders, dispatch, warranty, and executive BI reporting.
+            </p>
+            <div class="technical-win-box">
+              <strong>Architecture Challenge &amp; Win:</strong> Engineered an automated channel stock synchronization bridge that reconciles central warehouse inventory in real time against <strong>Shopify, Amazon, Flipkart, and Myntra</strong>, automatically isolating and explaining gap discrepancies before overselling occurs.
+            </div>
+            <div class="tech-spec-list">
+              <span class="tech-spec-item">Node.js</span>
+              <span class="tech-spec-item">TypeScript</span>
+              <span class="tech-spec-item">PostgreSQL</span>
+              <span class="tech-spec-item">Sequelize</span>
+              <span class="tech-spec-item">Next.js</span>
+              <span class="tech-spec-item">AWS EC2</span>
+              <span class="tech-spec-item">PM2</span>
+              <span class="tech-spec-item">Apache JMeter</span>
+            </div>
+          </article>
 
-		<div id="fh5co-consult">
-			<div class="video fh5co-video" style="background-image: url(images/cover_bg_1.jpg);">
-				<div class="overlay"></div>
-			</div>
-			<div class="choose animate-box">
-				<h2>Contact</h2>
-				<form action="#" onsubmit="myFun(event); return false;">
-					<div class="row form-group">
-						<div class="col-md-6">
-							<input type="text" id="fname" class="form-control" placeholder="Your firstname" required>
-						</div>
-					</div>
-					<div class="row form-group">
-						<div class="col-md-6">
-							<input type="text" id="lname" class="form-control" placeholder="Your lastname">
-						</div>
-					</div>
+          <!-- Case Study 2 -->
+          <article class="case-study-card">
+            <div class="card-eyebrow">
+              <span class="card-category">Industrial ERP &bull; Production Tracking</span>
+              <span class="card-role-tag">Project Lead</span>
+            </div>
+            <h4 class="card-heading">
+              Industrial Manufacturing ERP with FIFO Batch Ledger
+            </h4>
+            <p class="card-desc">
+              End-to-end industrial manufacturing platform orchestrating core data flows from incoming leads and quotes through Bill of Materials (BOM) explosion, warehouse inventory, quality control gates, and final plant dispatch.
+            </p>
+            <div class="technical-win-box">
+              <strong>Architecture Challenge &amp; Win:</strong> Implemented a high-integrity <strong>FIFO (First-In, First-Out)</strong> batch inventory ledger with transactional locking to ensure accurate raw material cost tracking and prevent inventory valuation errors during high-volume batch dispatch.
+            </div>
+            <div class="tech-spec-list">
+              <span class="tech-spec-item">Node.js</span>
+              <span class="tech-spec-item">TypeScript</span>
+              <span class="tech-spec-item">PostgreSQL</span>
+              <span class="tech-spec-item">Sequelize</span>
+              <span class="tech-spec-item">Next.js</span>
+              <span class="tech-spec-item">AWS EC2</span>
+              <span class="tech-spec-item">PM2</span>
+            </div>
+          </article>
 
-					<div class="row form-group">
-						<div class="col-md-12">
-							<input type="email" id="email" class="form-control" placeholder="Your email address" required>
-						</div>
-					</div>
+          <!-- Case Study 3 -->
+          <article class="case-study-card">
+            <div class="card-eyebrow">
+              <span class="card-category">High-Value Commodity Exchange</span>
+              <span class="card-role-tag">Backend Developer</span>
+            </div>
+            <h4 class="card-heading">
+              B2B Diamond Trading Platform
+            </h4>
+            <p class="card-desc">
+              Institutional trading and memo platform for certified polished diamonds. Built multi-tier role-based permissions (RBAC), compliant GST invoice generation, and dynamic PDF and Excel reporting exports configured per user access tier.
+            </p>
+            <div class="technical-win-box">
+              <strong>Architecture Challenge &amp; Win:</strong> Architected indexed database search queries over multi-attribute diamond parameters (carat, cut, color, clarity), delivering sub-40ms response times on high-concurrency inventory inquiries.
+            </div>
+            <div class="tech-spec-list">
+              <span class="tech-spec-item">Node.js</span>
+              <span class="tech-spec-item">TypeScript</span>
+              <span class="tech-spec-item">Express</span>
+              <span class="tech-spec-item">PostgreSQL</span>
+              <span class="tech-spec-item">Sequelize</span>
+              <span class="tech-spec-item">EJS</span>
+              <span class="tech-spec-item">PDF/Excel Engine</span>
+            </div>
+          </article>
 
-					<div class="row form-group">
-						<div class="col-md-12">
-							<input type="text" id="subject" class="form-control"
-								placeholder="Your subject of this message">
-						</div>
-					</div>
+          <!-- Case Study 4 -->
+          <article class="case-study-card">
+            <div class="card-eyebrow">
+              <span class="card-category">Dual E-Commerce Engine (B2B &amp; B2C)</span>
+              <span class="card-role-tag">Backend Developer</span>
+            </div>
+            <h4 class="card-heading">
+              Jewellery E-Commerce Platform
+            </h4>
+            <p class="card-desc">
+              Backend architecture for luxury jewellery retail and wholesale admin portal, including dynamic metal and diamond pricing engines, product catalog management, cart and order pipelines, payment gateways, and wholesale trade inquiries.
+            </p>
+            <div class="tech-spec-list">
+              <span class="tech-spec-item">Node.js</span>
+              <span class="tech-spec-item">TypeScript</span>
+              <span class="tech-spec-item">Express</span>
+              <span class="tech-spec-item">PostgreSQL</span>
+              <span class="tech-spec-item">Sequelize</span>
+              <span class="tech-spec-item">Next.js</span>
+              <span class="tech-spec-item">AWS S3</span>
+            </div>
+          </article>
+        </section>
 
-					<div class="row form-group">
-						<div class="col-md-12">
-							<textarea name="message" id="message" cols="30" rows="10" class="form-control"
-								placeholder="Your message" required></textarea>
-						</div>
-					</div>
-					<div class="form-group">
-						<input type="submit" value="Send Message" class="btn btn-primary">
-					</div>
+        <!-- 03 // AGENTIC AI & PERFORMANCE LAB -->
+        <section id="ai-perf" class="section-content">
+          <header class="section-header">
+            <span class="section-num">03.</span>
+            <h3 class="section-title">Agentic AI &amp; Performance Engineering</h3>
+          </header>
 
-				</form>
-			</div>
-		</div>
+          <!-- Lab 1: Claude Code Rules -->
+          <article class="case-study-card">
+            <div class="card-eyebrow">
+              <span class="card-category">Deterministic AI Engineering</span>
+              <span class="card-role-tag">Daily Production Practice</span>
+            </div>
+            <h4 class="card-heading">
+              Claude Code Rule Authoring &amp; Agent Workflows
+            </h4>
+            <p class="card-desc">
+              To eliminate hallucinations and architectural drift, I author deterministic rule files (<code style="font-family: var(--font-mono); font-size: 0.8125rem;">.clauderc</code>, schema contracts) that enforce coding standards across development cycles. I use Claude Code daily for sprint planning, BRD/FRD translation, automated code reviews, and exploring autonomous security verification agents inside the CI/CD pipeline.
+            </p>
+            <div class="tech-spec-list">
+              <span class="tech-spec-item">Claude Code</span>
+              <span class="tech-spec-item">Rule File Architecture</span>
+              <span class="tech-spec-item">Prompt Engineering</span>
+              <span class="tech-spec-item">AI Agent Pipelines</span>
+              <span class="tech-spec-item">CI/CD Security Verification</span>
+            </div>
+          </article>
 
-		<!-- <div id="map" class="fh5co-map"></div> -->
-	</div>
+          <!-- Lab 2: JMeter Performance Testing -->
+          <article class="case-study-card">
+            <div class="card-eyebrow">
+              <span class="card-category">Infrastructure Stress Audits</span>
+              <span class="card-role-tag">Performance Verification</span>
+            </div>
+            <h4 class="card-heading">
+              200+ Endpoint Load Testing &amp; Connection Pool Tuning
+            </h4>
+            <p class="card-desc">
+              Conducted exhaustive synthetic load tests using Apache JMeter across 200+ REST endpoints. Flagged and remediated <strong>28 critical endpoints</strong> at risk of timing out under production peak load. Traced PostgreSQL connection pool timeouts and memory exhaustion on AWS EC2, restructuring PM2 cluster workers and heap allocation limits.
+            </p>
+            <div class="tech-spec-list">
+              <span class="tech-spec-item">Apache JMeter</span>
+              <span class="tech-spec-item">Connection Pool Tuning</span>
+              <span class="tech-spec-item">PostgreSQL Optimization</span>
+              <span class="tech-spec-item">PM2 Worker Allocation</span>
+              <span class="tech-spec-item">API Profiling</span>
+            </div>
+          </article>
 
-	<div id="fh5co-footer">
-		<div class="container">
-			<div class="row">
-				<div class="col-md-12">
-					<p>&copy;2024 All Rights Reserved. <br>Designed by <a href="https://nickpatel008.github.io/" target="_blank"> Dev Nick </a> | Demo Images:
-						<a href="https://unsplash.com" target="_blank" rel="noopener noreferrer">Unsplash</a>
-					</p>
-					<!-- <p>&copy; 2017 Free HTML5 Template. All Rights Reserved. <br>Designed by <a href="http://freehtml5.co" target="_blank">FreeHTML5.co</a> Demo Images: <a href="http://unsplash.com" target="_blank">Unsplash</a></p> -->
-				</div>
-			</div>
-		</div>
-	</div>
+          <!-- Lab 3: SwiftVision AI -->
+          <article class="case-study-card">
+            <div class="card-eyebrow">
+              <span class="card-category">Computer Vision Lab</span>
+              <span class="card-role-tag">Personal Showcase</span>
+            </div>
+            <h4 class="card-heading">
+              SwiftVision AI &middot; Real-Time Object Detection
+            </h4>
+            <p class="card-desc">
+              Real-time computer vision system that ingests live video feeds, running continuous frame-by-frame inference to detect and label multi-class objects with low latency using YOLOv5 and OpenCV.
+            </p>
+            <div class="tech-spec-list">
+              <span class="tech-spec-item">Python</span>
+              <span class="tech-spec-item">YOLOv5</span>
+              <span class="tech-spec-item">OpenCV</span>
+              <span class="tech-spec-item">Real-Time Video Ingestion</span>
+            </div>
+          </article>
+        </section>
 
-	<div class="gototop js-top">
-		<a href="#" class="js-gotop"><i class="icon-arrow-up22"></i></a>
-	</div>
+        <!-- 04 // CAREER CHRONOLOGY -->
+        <section id="experience" class="section-content">
+          <header class="section-header">
+            <span class="section-num">04.</span>
+            <h3 class="section-title">Career Chronology</h3>
+          </header>
 
-	<!-- jQuery -->
-	<script src="js/jquery.min.js"></script>
-	<!-- jQuery Easing -->
-	<script src="js/jquery.easing.1.3.js"></script>
-	<!-- Bootstrap -->
-	<script src="js/bootstrap.min.js"></script>
-	<!-- Waypoints -->
-	<script src="js/jquery.waypoints.min.js"></script>
-	<!-- Stellar Parallax -->
-	<script src="js/jquery.stellar.min.js"></script>
-	<!-- Easy PieChart -->
-	<script src="js/jquery.easypiechart.min.js"></script>
-	<!-- Google Map -->
-	<script
-		src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCefOgb1ZWqYtj7raVSmN4PL2WkTrc-KyA&sensor=false"></script>
-	<script src="js/google_map.js"></script>
+          <div class="chronology-list">
+            <!-- Role 1 -->
+            <div class="chronology-item">
+              <div class="chronology-dot"></div>
+              <div class="chronology-date">MAR 2025 – OCT 2026</div>
+              <h4 class="chronology-title">Software Development Engineer II &middot; Project Lead</h4>
+              <div class="chronology-company">Sarvadhi Solutions Pvt. Ltd. &middot; Surat, Gujarat, India</div>
+              <ul class="chronology-details">
+                <li>Project Lead on two flagship enterprise systems: Watch Assembly ERP and Industrial Manufacturing ERP.</li>
+                <li>Collaborated with Product Managers on module specifications, task decomposition across engineers, code reviews, and production UAT releases.</li>
+                <li>Integrated Claude Code daily for sprint planning, BRD/FRD drafts, and automated code review, backed by custom-authored rule files.</li>
+                <li>Stress-tested 200+ endpoints with Apache JMeter, proactively isolating and resolving 28 high-risk timeout bottlenecks.</li>
+                <li>Traced and resolved PostgreSQL connection timeouts and EC2 memory leaks; fine-tuned PM2 cluster worker limits and heap sizes.</li>
+              </ul>
+            </div>
 
-	<!-- Main -->
-	<script src="js/main.js"></script>
+            <!-- Role 2 -->
+            <div class="chronology-item">
+              <div class="chronology-dot"></div>
+              <div class="chronology-date">FEB 2022 – OCT 2023</div>
+              <h4 class="chronology-title">Node.js Developer (Software Engineer from Aug 2022)</h4>
+              <div class="chronology-company">Differenz System &middot; Surat, Gujarat, India</div>
+              <ul class="chronology-details">
+                <li>Engineered core subscription commerce application: recurring billing cycles, checkout pipeline, custom coupon engine, REST APIs, and Firebase deep links and push messaging.</li>
+                <li>Led a team of 4 backend developers on a recipe and meal platform, managing client technical communication and deploying on AWS EC2 with RDS.</li>
+                <li>Structured Klaviyo email automation workflows segmented by granular user lifecycle actions.</li>
+              </ul>
+            </div>
+          </div>
+        </section>
+
+        <!-- 05 // TECHNICAL MATRIX -->
+        <section id="matrix" class="section-content">
+          <header class="section-header">
+            <span class="section-num">05.</span>
+            <h3 class="section-title">Technical Competencies</h3>
+          </header>
+
+          <div class="matrix-grid">
+            <div class="matrix-card">
+              <h4 class="matrix-card-title">Backend &amp; Distributed APIs</h4>
+              <div class="tech-spec-list">
+                <span class="tech-spec-item">Node.js</span>
+                <span class="tech-spec-item">Express</span>
+                <span class="tech-spec-item">TypeScript</span>
+                <span class="tech-spec-item">JavaScript (ES6+)</span>
+                <span class="tech-spec-item">RESTful APIs</span>
+                <span class="tech-spec-item">Socket.io</span>
+                <span class="tech-spec-item">JWT</span>
+                <span class="tech-spec-item">RBAC</span>
+              </div>
+            </div>
+
+            <div class="matrix-card">
+              <h4 class="matrix-card-title">Data Modeling &amp; Persistence</h4>
+              <div class="tech-spec-list">
+                <span class="tech-spec-item">PostgreSQL</span>
+                <span class="tech-spec-item">MySQL</span>
+                <span class="tech-spec-item">MongoDB</span>
+                <span class="tech-spec-item">Sequelize ORM</span>
+                <span class="tech-spec-item">Schema Migrations</span>
+                <span class="tech-spec-item">Seeders &amp; Indexes</span>
+              </div>
+            </div>
+
+            <div class="matrix-card">
+              <h4 class="matrix-card-title">Frontend &amp; Modern Web</h4>
+              <div class="tech-spec-list">
+                <span class="tech-spec-item">React.js</span>
+                <span class="tech-spec-item">Next.js (App Router)</span>
+                <span class="tech-spec-item">HTML5</span>
+                <span class="tech-spec-item">CSS3 / SCSS</span>
+                <span class="tech-spec-item">Semantic UI</span>
+              </div>
+            </div>
+
+            <div class="matrix-card">
+              <h4 class="matrix-card-title">Cloud, DevOps &amp; Performance</h4>
+              <div class="tech-spec-list">
+                <span class="tech-spec-item">AWS EC2</span>
+                <span class="tech-spec-item">AWS RDS</span>
+                <span class="tech-spec-item">AWS S3</span>
+                <span class="tech-spec-item">PM2 Clustering</span>
+                <span class="tech-spec-item">Apache JMeter</span>
+                <span class="tech-spec-item">Git / CI/CD</span>
+                <span class="tech-spec-item">Connection Tuning</span>
+              </div>
+            </div>
+
+            <div class="matrix-card">
+              <h4 class="matrix-card-title">AI, Vision &amp; Tooling</h4>
+              <div class="tech-spec-list">
+                <span class="tech-spec-item">Claude Code</span>
+                <span class="tech-spec-item">Rule File Authoring</span>
+                <span class="tech-spec-item">AI Agents</span>
+                <span class="tech-spec-item">Python</span>
+                <span class="tech-spec-item">YOLOv5</span>
+                <span class="tech-spec-item">OpenCV</span>
+              </div>
+            </div>
+
+            <div class="matrix-card">
+              <h4 class="matrix-card-title">Marketplace &amp; Third-Party APIs</h4>
+              <div class="tech-spec-list">
+                <span class="tech-spec-item">Shopify API</span>
+                <span class="tech-spec-item">Amazon SP-API</span>
+                <span class="tech-spec-item">Flipkart</span>
+                <span class="tech-spec-item">Myntra</span>
+                <span class="tech-spec-item">Shiprocket</span>
+                <span class="tech-spec-item">Firebase</span>
+                <span class="tech-spec-item">Klaviyo</span>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- 06 // CREDENTIALS & FOUNDATION -->
+        <section id="credentials" class="section-content">
+          <header class="section-header">
+            <span class="section-num">06.</span>
+            <h3 class="section-title">Credentials &amp; Education</h3>
+          </header>
+
+          <div class="education-entry">
+            <div class="education-date">2020 – 2022</div>
+            <h4 class="education-title">
+              Master of Computer Applications (MCA)
+            </h4>
+            <div class="education-institution">
+              Veer Narmad South Gujarat University &middot; Surat, Gujarat, India
+            </div>
+          </div>
+
+          <div class="case-study-card" style="margin-bottom: 0;">
+            <div class="card-eyebrow">
+              <span class="card-category">Google Cloud Skills Boost</span>
+              <span class="card-role-tag">Certified Credentials</span>
+            </div>
+            <div class="tech-spec-list" style="margin-top: var(--space-2);">
+              <span class="tech-spec-item">Generative AI Fundamentals</span>
+              <span class="tech-spec-item">Introduction to Large Language Models</span>
+              <span class="tech-spec-item">Introduction to Responsible AI</span>
+              <span class="tech-spec-item">Digital Transformation with Google Cloud</span>
+              <span class="tech-spec-item">Modernize Infrastructure &amp; Applications with Google Cloud</span>
+            </div>
+          </div>
+        </section>
+
+        <!-- 07 // COMMUNICATION CONSOLE -->
+        <section id="contact" class="section-content">
+          <header class="section-header">
+            <span class="section-num">07.</span>
+            <h3 class="section-title">Communication Console</h3>
+          </header>
+
+          <p class="card-desc">
+            Available for SDE II, Lead Backend, and Full Stack &amp; Agentic AI roles. Inquiries regarding enterprise architecture, ERP systems, or technical leadership are welcome.
+          </p>
+
+          <form id="contact-form" class="contact-form" novalidate>
+            <div class="form-group">
+              <label for="form-name" class="form-label">Full Name *</label>
+              <input type="text" id="form-name" class="form-input" placeholder="Your name" autocomplete="name" required>
+            </div>
+
+            <div class="form-group">
+              <label for="form-email" class="form-label">Email Address *</label>
+              <input type="email" id="form-email" class="form-input" placeholder="name@company.com" autocomplete="email" required>
+            </div>
+
+            <div class="form-group">
+              <label for="form-subject" class="form-label">Subject</label>
+              <input type="text" id="form-subject" class="form-input" placeholder="SDE II Opportunity / Technical Inquiry">
+            </div>
+
+            <div class="form-group">
+              <label for="form-message" class="form-label">Message *</label>
+              <textarea id="form-message" class="form-textarea" placeholder="Describe the role or project scope..." required></textarea>
+            </div>
+
+            <div class="form-actions">
+              <button type="submit" class="btn-primary">Transmit Message &rarr;</button>
+              <a href="mailto:dpatel0254@gmail.com" class="link-subtle">Or email directly: dpatel0254@gmail.com</a>
+            </div>
+          </form>
+
+          <!-- Footer Metadata -->
+          <footer class="footer-meta">
+            <div>&copy; 2026 Dhaval Patel. Engineered with pure semantic HTML5 &amp; modern CSS.</div>
+            <div>Warm Editorial &times; Cool Technical &middot; WCAG 2.2 AA / AAA Compliant.</div>
+            <div class="portfolio-version-badge">Portfolio v2.0 &middot; <a href="v1/" class="link-subtle">View Legacy Portfolio v1.0 &rarr;</a></div>
+          </footer>
+        </section>
+
+      </main>
+    </div>
+  </div>
+
+  <!-- Core Client Interactions -->
+  <script src="js/main.js"></script>
 
 </body>
-
 </html>

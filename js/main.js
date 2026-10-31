@@ -1,257 +1,218 @@
-; (function () {
+/**
+ * The Architectural Ledger — Core Client Interactions
+ * Project: Dhaval Patel Portfolio
+ * Standard: Vanilla ES6+ &middot; Zero Bloat &middot; Accessible (WCAG AAA)
+ */
 
-	'use strict';
+(function () {
+  'use strict';
 
-	var isMobile = {
-		Android: function () {
-			return navigator.userAgent.match(/Android/i);
-		},
-		BlackBerry: function () {
-			return navigator.userAgent.match(/BlackBerry/i);
-		},
-		iOS: function () {
-			return navigator.userAgent.match(/iPhone|iPad|iPod/i);
-		},
-		Opera: function () {
-			return navigator.userAgent.match(/Opera Mini/i);
-		},
-		Windows: function () {
-			return navigator.userAgent.match(/IEMobile/i);
-		},
-		any: function () {
-			return (isMobile.Android() || isMobile.BlackBerry() || isMobile.iOS() || isMobile.Opera() || isMobile.Windows());
-		}
-	};
+  // 1. Non-Blocking IntersectionObserver ScrollSpy with Keyboard ARIA Management
+  function initScrollSpy() {
+    var navLinks = document.querySelectorAll('.nav-anchor');
+    var sections = document.querySelectorAll('.content-right section');
 
+    if (!navLinks.length || !sections.length) return;
 
-	var fullHeight = function () {
+    if ('IntersectionObserver' in window) {
+      var observer = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) {
+            var id = entry.target.getAttribute('id');
+            navLinks.forEach(function (link) {
+              if (link.getAttribute('href') === '#' + id) {
+                link.classList.add('active');
+                link.setAttribute('aria-current', 'location');
+              } else {
+                link.classList.remove('active');
+                link.removeAttribute('aria-current');
+              }
+            });
+          }
+        });
+      }, {
+        rootMargin: '-20% 0px -70% 0px',
+        threshold: 0
+      });
 
-		if (!isMobile.any()) {
-			$('.js-fullheight').css('height', $(window).height());
-			$(window).resize(function () {
-				$('.js-fullheight').css('height', $(window).height());
-			});
-		}
-	};
+      sections.forEach(function (sec) {
+        observer.observe(sec);
+      });
+    } else {
+      // Fallback for environments without IntersectionObserver
+      var onScroll = function () {
+        var scrollPos = window.scrollY || window.pageYOffset;
+        var threshold = 160;
 
-	// Parallax
-	var parallax = function () {
-		$(window).stellar();
-	};
+        sections.forEach(function (sec) {
+          var top = sec.offsetTop - threshold;
+          var bottom = top + sec.offsetHeight;
+          var id = sec.getAttribute('id');
 
-	var contentWayPoint = function () {
-		var i = 0;
-		$('.animate-box').waypoint(function (direction) {
+          if (scrollPos >= top && scrollPos < bottom) {
+            navLinks.forEach(function (link) {
+              if (link.getAttribute('href') === '#' + id) {
+                link.classList.add('active');
+                link.setAttribute('aria-current', 'location');
+              } else {
+                link.classList.remove('active');
+                link.removeAttribute('aria-current');
+              }
+            });
+          }
+        });
+      };
 
-			if (direction === 'down' && !$(this.element).hasClass('animated-fast')) {
+      window.addEventListener('scroll', onScroll, { passive: true });
+      onScroll();
+    }
+  }
 
-				i++;
+  // 2. Resilient Contact Form Mailto Handler with Validation & Zero Data Loss
+  function initContactForm() {
+    var form = document.getElementById('contact-form');
+    if (!form) return;
 
-				$(this.element).addClass('item-animate');
-				setTimeout(function () {
+    var statusMsg = document.createElement('div');
+    statusMsg.setAttribute('role', 'status');
+    statusMsg.setAttribute('aria-live', 'polite');
+    statusMsg.className = 'form-status';
+    form.appendChild(statusMsg);
 
-					$('body .animate-box.item-animate').each(function (k) {
-						var el = $(this);
-						setTimeout(function () {
-							var effect = el.data('animate-effect');
-							if (effect === 'fadeIn') {
-								el.addClass('fadeIn animated-fast');
-							} else if (effect === 'fadeInLeft') {
-								el.addClass('fadeInLeft animated-fast');
-							} else if (effect === 'fadeInRight') {
-								el.addClass('fadeInRight animated-fast');
-							} else {
-								el.addClass('fadeInUp animated-fast');
-							}
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
 
-							el.removeClass('item-animate');
-						}, k * 100, 'easeInOutExpo');
-					});
+      var nameInput = document.getElementById('form-name');
+      var emailInput = document.getElementById('form-email');
+      var subjectInput = document.getElementById('form-subject');
+      var messageInput = document.getElementById('form-message');
 
-				}, 50);
+      var name = nameInput ? nameInput.value.trim() : '';
+      var email = emailInput ? emailInput.value.trim() : '';
+      var rawSubject = subjectInput ? subjectInput.value.trim() : '';
+      var subject = (rawSubject.length > 0)
+        ? rawSubject.replace(/[\r\n]+/g, ' ')
+        : 'Project Inquiry / Opportunity';
+      var message = messageInput ? messageInput.value.trim() : '';
 
-			}
+      var emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
-		}, { offset: '85%' });
-	};
+      if (!name || !email || !message) {
+        statusMsg.textContent = 'Please fill out all required fields (Name, Email, and Message).';
+        statusMsg.className = 'form-status form-status-error';
+        return;
+      }
 
+      if (!emailPattern.test(email)) {
+        statusMsg.textContent = 'Please enter a valid email address (e.g., name@company.com).';
+        statusMsg.className = 'form-status form-status-error';
+        if (emailInput) emailInput.focus();
+        return;
+      }
 
+      var bodyContent = 'From: ' + name + ' (' + email + ')\n\nMessage:\n' + message;
+      var mailtoUrl = 'mailto:dpatel0254@gmail.com?' +
+        'subject=' + encodeURIComponent(subject) +
+        '&body=' + encodeURIComponent(bodyContent);
 
-	var goToTop = function () {
+      if (mailtoUrl.length > 2000) {
+        statusMsg.textContent = 'Message is too long for direct mailto launch. Please use the direct email link or shorten the message.';
+        statusMsg.className = 'form-status form-status-error';
+        return;
+      }
 
-		$('.js-gotop').on('click', function (event) {
+      statusMsg.textContent = 'Opening your email client... If it does not launch automatically, write directly to dpatel0254@gmail.com.';
+      statusMsg.className = 'form-status form-status-success';
 
-			event.preventDefault();
+      window.location.href = mailtoUrl;
+      // Intentionally do NOT call form.reset() to prevent user data loss
+    });
+  }
 
-			$('html, body').animate({
-				scrollTop: $('html').offset().top
-			}, 500, 'easeInOutExpo');
+  // 3. Accessible One-Click Email Copy Utility
+  function initCopyEmail() {
+    var copyBtn = document.getElementById('btn-copy-email');
+    if (!copyBtn) return;
 
-			return false;
-		});
+    var liveAnnounce = document.createElement('span');
+    liveAnnounce.setAttribute('role', 'status');
+    liveAnnounce.setAttribute('aria-live', 'polite');
+    liveAnnounce.style.position = 'absolute';
+    liveAnnounce.style.left = '-9999px';
+    document.body.appendChild(liveAnnounce);
 
-		$(window).scroll(function () {
+    copyBtn.addEventListener('click', function () {
+      var email = 'dpatel0254@gmail.com';
+      var origText = copyBtn.textContent;
 
-			var $win = $(window);
-			if ($win.scrollTop() > 200) {
-				$('.js-top').addClass('active');
-			} else {
-				$('.js-top').removeClass('active');
-			}
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(email).then(function () {
+          copyBtn.textContent = 'Copied to Clipboard!';
+          liveAnnounce.textContent = 'Email address copied to clipboard.';
+          setTimeout(function () {
+            copyBtn.textContent = origText;
+            liveAnnounce.textContent = '';
+          }, 2500);
+        }).catch(function () {
+          window.location.href = 'mailto:' + email;
+        });
+      } else {
+        window.location.href = 'mailto:' + email;
+      }
+    });
+  }
 
-		});
+  // 4. Accessible Theme Toggle (Warm Editorial Light vs Deep Charcoal Dark)
+  function initThemeToggle() {
+    var toggleBtn = document.getElementById('theme-toggle');
+    if (!toggleBtn) return;
 
-	};
+    var iconSpan = toggleBtn.querySelector('.theme-toggle-icon');
+    var textSpan = toggleBtn.querySelector('.theme-toggle-text');
+    var metaThemeColor = document.getElementById('meta-theme-color');
 
-	var pieChart = function () {
-		$('.chart').easyPieChart({
-			scaleColor: false,
-			lineWidth: 4,
-			lineCap: 'butt',
-			barColor: '#FF9000',
-			trackColor: "#f5f5f5",
-			size: 160,
-			animate: 1000
-		});
-	};
+    function updateButtonState(theme) {
+      if (theme === 'dark') {
+        if (iconSpan) iconSpan.textContent = '☼';
+        if (textSpan) textSpan.textContent = 'Light';
+        toggleBtn.setAttribute('aria-label', 'Switch to light theme');
+        if (metaThemeColor) metaThemeColor.setAttribute('content', '#15191E');
+      } else {
+        if (iconSpan) iconSpan.textContent = '☾';
+        if (textSpan) textSpan.textContent = 'Dark';
+        toggleBtn.setAttribute('aria-label', 'Switch to dark theme');
+        if (metaThemeColor) metaThemeColor.setAttribute('content', '#F4F2EC');
+      }
+    }
 
-	var skillsWayPoint = function () {
-		if ($('#fh5co-skills').length > 0) {
-			$('#fh5co-skills').waypoint(function (direction) {
+    var currentTheme = document.documentElement.getAttribute('data-theme') || 'light';
+    updateButtonState(currentTheme);
 
-				if (direction === 'down' && !$(this.element).hasClass('animated')) {
-					setTimeout(pieChart, 400);
-					$(this.element).addClass('animated');
-				}
-			}, { offset: '90%' });
-		}
+    toggleBtn.addEventListener('click', function () {
+      var isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+      var nextTheme = isDark ? 'light' : 'dark';
 
-	};
+      document.documentElement.setAttribute('data-theme', nextTheme);
+      try {
+        localStorage.setItem('portfolio-theme', nextTheme);
+      } catch (err) {}
 
+      updateButtonState(nextTheme);
+    });
+  }
 
-	// Loading page
-	var loaderPage = function () {
-		$(".fh5co-loader").fadeOut("slow");
-	};
-
-
-	$(function () {
-		contentWayPoint();
-		goToTop();
-		loaderPage();
-		fullHeight();
-		parallax();
-		// pieChart();
-		skillsWayPoint();
-	});
-
-
-}());
-
-function myFunction(e) {
-	var x = e.clientX - 90;
-	var y = e.clientY - 90;
-	document.getElementById("tooltip").style.left = x + "px";
-	document.getElementById("tooltip").style.top = y + "px";
-}
-
-new kursor({
-	type: 1,
-	removeDefaultCursor: true,
-	color: '#000'
-})
-
-const defaults = {
-	spread: 360,
-	ticks: 50,
-	gravity: 0,
-	decay: 0.94,
-	startVelocity: 30,
-	shapes: ["star"],
-	colors: ["FFE400", "FFBD00", "E89400", "FFCA6C", "FDFFB8"],
-};
-
-function shoot() {
-	confetti({
-		...defaults,
-		particleCount: 40,
-		scalar: 1.2,
-		shapes: ["star"],
-	});
-
-	confetti({
-		...defaults,
-		particleCount: 10,
-		scalar: 0.75,
-		shapes: ["circle"],
-	});
-}
-
-setTimeout(shoot, 0);
-
-function shootEmojiAndUnicorns() {
-	confetti({
-		...defaults,
-		particleCount: 30,
-		scalar: 1.2,
-		shapes: ["circle", "square"],
-		colors: ["#a864fd", "#29cdff", "#78ff44", "#ff718d", "#fdff6a"],
-	});
-
-	confetti({
-		...defaults,
-		particleCount: 20,
-		scalar: 2,
-		shapes: ["text"],
-		shapeOptions: {
-			text: {
-				value: ["🦄", "🌈"],
-			},
-		},
-	});
-}
-
-function downloadResume() {
-	const a = document.createElement('a')
-	let url = "Docs/Dhaval_Resume.pdf"
-	a.href = url
-	a.download = url.split('/').pop()
-	document.body.appendChild(a)
-	a.click()
-	document.body.removeChild(a)
-	shootEmojiAndUnicorns()
-}
-
-function myFun(event) {
-	event.preventDefault();
-	var fname = document.getElementById('fname').value;
-	var lname = document.getElementById('lname').value;
-	var email = document.getElementById('email').value;
-	var subject = document.getElementById('subject').value;
-	var message = document.getElementById('message').value;
-	
-	if (!fname || !email || !message) {
-		alert('Please fill in all required fields (First Name, Email, and Message).');
-		return;
-	}
-	
-	// Create mailto link
-	var mailtoLink = 'mailto:dpatel0254@gmail.com?subject=' + encodeURIComponent(subject || 'Contact from Portfolio') + '&body=' + encodeURIComponent(
-		'Name: ' + fname + ' ' + lname + '\n' +
-		'Email: ' + email + '\n\n' +
-		'Message:\n' + message
-	);
-	
-	window.location.href = mailtoLink;
-	
-	// Show success message
-	setTimeout(function() {
-		alert('Thank you for your message! Your email client should open shortly.');
-		// Reset form
-		document.getElementById('fname').value = '';
-		document.getElementById('lname').value = '';
-		document.getElementById('email').value = '';
-		document.getElementById('subject').value = '';
-		document.getElementById('message').value = '';
-	}, 100);
-}
+  // Lifecycle Initialization
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', function () {
+      initScrollSpy();
+      initContactForm();
+      initCopyEmail();
+      initThemeToggle();
+    });
+  } else {
+    initScrollSpy();
+    initContactForm();
+    initCopyEmail();
+    initThemeToggle();
+  }
+})();
