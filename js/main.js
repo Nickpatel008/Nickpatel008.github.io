@@ -31,22 +31,26 @@
     return { r: 180, g: 175, b: 165 };
   }
 
-  // 1. Interactive Dot Grid Controller (Hero Canvas)
+  // 1. Interactive Dot Grid Controller (Full-Screen Glowing Particle Canvas)
   var DotGrid = (function () {
     var canvas, ctx;
-    var heroSection;
     var dots = [];
     var mouse = { x: -9999, y: -9999, active: false };
     var animationFrameId = null;
-    var isHeroVisible = true;
     var isTabVisible = !document.hidden;
     var hairlineColor = { r: 217, g: 213, b: 202 };
     var accentColor = { r: 232, g: 72, b: 28 };
     var dotSpacing = 28;
     var baseRadius = 1.25;
-    var maxDist = 140;
-    var maxScale = 1.8;
+    var maxDist = 160;
+    var maxScale = 2.4;
     var isTouchDevice = false;
+
+    function getBaseAlpha() {
+      var isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+      var alpha = isDark ? 0.38 : 0.32;
+      return isTouchDevice ? alpha * 0.6 : alpha;
+    }
 
     function readCSSColors() {
       var styles = getComputedStyle(document.documentElement);
@@ -60,30 +64,36 @@
       dots = [];
       var cols = Math.ceil(width / dotSpacing) + 1;
       var rows = Math.ceil(height / dotSpacing) + 1;
+      var offsetX = (width - (cols - 1) * dotSpacing) / 2;
+      var offsetY = (height - (rows - 1) * dotSpacing) / 2;
+      var baseAlpha = getBaseAlpha();
 
       for (var r = 0; r < rows; r++) {
         for (var c = 0; c < cols; c++) {
           dots.push({
-            x: c * dotSpacing,
-            y: r * dotSpacing,
+            x: offsetX + c * dotSpacing,
+            y: offsetY + r * dotSpacing,
             currentScale: 1,
             targetScale: 1,
             currentR: hairlineColor.r,
             currentG: hairlineColor.g,
             currentB: hairlineColor.b,
-            currentAlpha: isTouchDevice ? 0.25 : 0.40,
-            targetAlpha: isTouchDevice ? 0.25 : 0.40
+            targetR: hairlineColor.r,
+            targetG: hairlineColor.g,
+            targetB: hairlineColor.b,
+            currentAlpha: baseAlpha,
+            targetAlpha: baseAlpha,
+            factor: 0
           });
         }
       }
     }
 
     function resize() {
-      if (!canvas || !heroSection) return;
-      var rect = heroSection.getBoundingClientRect();
+      if (!canvas) return;
+      var width = window.innerWidth;
+      var height = window.innerHeight;
       var dpr = Math.min(window.devicePixelRatio || 1, 2);
-      var width = rect.width;
-      var height = rect.height;
 
       canvas.width = Math.round(width * dpr);
       canvas.height = Math.round(height * dpr);
@@ -98,11 +108,12 @@
 
     function render() {
       if (!ctx || !canvas) return;
-      var width = canvas.width / (Math.min(window.devicePixelRatio || 1, 2));
-      var height = canvas.height / (Math.min(window.devicePixelRatio || 1, 2));
+      var width = window.innerWidth;
+      var height = window.innerHeight;
       ctx.clearRect(0, 0, width, height);
 
-      var baseAlpha = isTouchDevice ? 0.25 : 0.40;
+      var baseAlpha = getBaseAlpha();
+      var activeGlowDots = [];
 
       for (var i = 0; i < dots.length; i++) {
         var dot = dots[i];
@@ -113,13 +124,15 @@
           var dist = Math.sqrt(dx * dx + dy * dy);
 
           if (dist < maxDist) {
-            var factor = 1 - (dist / maxDist); // 0 to 1
+            var factor = Math.pow(1 - (dist / maxDist), 1.2);
+            dot.factor = factor;
             dot.targetScale = 1 + factor * (maxScale - 1);
             dot.targetR = Math.round(hairlineColor.r + (accentColor.r - hairlineColor.r) * factor);
             dot.targetG = Math.round(hairlineColor.g + (accentColor.g - hairlineColor.g) * factor);
             dot.targetB = Math.round(hairlineColor.b + (accentColor.b - hairlineColor.b) * factor);
-            dot.targetAlpha = baseAlpha + factor * (0.95 - baseAlpha);
+            dot.targetAlpha = baseAlpha + factor * (0.98 - baseAlpha);
           } else {
+            dot.factor = 0;
             dot.targetScale = 1;
             dot.targetR = hairlineColor.r;
             dot.targetG = hairlineColor.g;
@@ -128,37 +141,97 @@
           }
 
           // Smooth lerp for continuous fluidity
-          dot.currentScale += (dot.targetScale - dot.currentScale) * 0.12;
-          dot.currentR += (dot.targetR - dot.currentR) * 0.12;
-          dot.currentG += (dot.targetG - dot.currentG) * 0.12;
-          dot.currentB += (dot.targetB - dot.currentB) * 0.12;
-          dot.currentAlpha += (dot.targetAlpha - dot.currentAlpha) * 0.12;
+          dot.currentScale += (dot.targetScale - dot.currentScale) * 0.14;
+          dot.currentR += (dot.targetR - dot.currentR) * 0.14;
+          dot.currentG += (dot.targetG - dot.currentG) * 0.14;
+          dot.currentB += (dot.targetB - dot.currentB) * 0.14;
+          dot.currentAlpha += (dot.targetAlpha - dot.currentAlpha) * 0.14;
         } else {
-          dot.currentScale = 1;
-          dot.currentR = hairlineColor.r;
-          dot.currentG = hairlineColor.g;
-          dot.currentB = hairlineColor.b;
-          dot.currentAlpha = baseAlpha;
+          dot.factor = 0;
+          dot.targetScale = 1;
+          dot.targetR = hairlineColor.r;
+          dot.targetG = hairlineColor.g;
+          dot.targetB = hairlineColor.b;
+          dot.targetAlpha = baseAlpha;
+
+          dot.currentScale += (dot.targetScale - dot.currentScale) * 0.10;
+          dot.currentR += (dot.targetR - dot.currentR) * 0.10;
+          dot.currentG += (dot.targetG - dot.currentG) * 0.10;
+          dot.currentB += (dot.targetB - dot.currentB) * 0.10;
+          dot.currentAlpha += (dot.targetAlpha - dot.currentAlpha) * 0.10;
         }
 
+        // Draw regular base dot
         ctx.beginPath();
         ctx.arc(dot.x, dot.y, baseRadius * dot.currentScale, 0, Math.PI * 2);
         ctx.fillStyle = 'rgba(' + Math.round(dot.currentR) + ',' + Math.round(dot.currentG) + ',' + Math.round(dot.currentB) + ',' + dot.currentAlpha.toFixed(2) + ')';
         ctx.fill();
+
+        if (dot.currentScale > 1.05) {
+          activeGlowDots.push(dot);
+        }
+      }
+
+      // Pass 2: Glowing Halo Bloom for Active Particles
+      if (!isTouchDevice && !prefersReducedMotion && activeGlowDots.length > 0) {
+        ctx.save();
+        for (var j = 0; j < activeGlowDots.length; j++) {
+          var aDot = activeGlowDots[j];
+          var gFactor = Math.min(1, Math.max(0, (aDot.currentScale - 1) / (maxScale - 1)));
+          if (gFactor <= 0.05) continue;
+
+          // 1. Soft atmospheric radial glow
+          var glowRadius = baseRadius * aDot.currentScale * (3.0 + gFactor * 2.2);
+          var grad = ctx.createRadialGradient(aDot.x, aDot.y, 0, aDot.x, aDot.y, glowRadius);
+          grad.addColorStop(0, 'rgba(' + accentColor.r + ',' + accentColor.g + ',' + accentColor.b + ', ' + (gFactor * 0.42).toFixed(2) + ')');
+          grad.addColorStop(0.5, 'rgba(' + accentColor.r + ',' + accentColor.g + ',' + accentColor.b + ', ' + (gFactor * 0.16).toFixed(2) + ')');
+          grad.addColorStop(1, 'rgba(' + accentColor.r + ',' + accentColor.g + ',' + accentColor.b + ', 0)');
+
+          ctx.beginPath();
+          ctx.arc(aDot.x, aDot.y, glowRadius, 0, Math.PI * 2);
+          ctx.fillStyle = grad;
+          ctx.fill();
+
+          // 2. High-intensity luminous core with shadowBlur
+          ctx.shadowColor = 'rgba(' + accentColor.r + ',' + accentColor.g + ',' + accentColor.b + ', ' + (gFactor * 0.95).toFixed(2) + ')';
+          ctx.shadowBlur = 10 * gFactor;
+          ctx.beginPath();
+          ctx.arc(aDot.x, aDot.y, baseRadius * aDot.currentScale, 0, Math.PI * 2);
+          ctx.fillStyle = 'rgba(' + Math.round(aDot.currentR) + ',' + Math.round(aDot.currentG) + ',' + Math.round(aDot.currentB) + ', 1.0)';
+          ctx.fill();
+        }
+        ctx.restore();
       }
     }
 
     function loop() {
-      if (!isHeroVisible || !isTabVisible || isTouchDevice || prefersReducedMotion) {
+      if (!isTabVisible || isTouchDevice || prefersReducedMotion) {
         animationFrameId = null;
         return;
       }
+
       render();
-      animationFrameId = requestAnimationFrame(loop);
+
+      // Check if animation needs to continue or can sleep to save CPU
+      var animating = mouse.active;
+      if (!animating) {
+        for (var i = 0; i < dots.length; i++) {
+          if (Math.abs(dots[i].currentScale - dots[i].targetScale) > 0.005) {
+            animating = true;
+            break;
+          }
+        }
+      }
+
+      if (animating) {
+        animationFrameId = requestAnimationFrame(loop);
+      } else {
+        animationFrameId = null;
+      }
     }
 
     function startLoop() {
-      if (!animationFrameId && isHeroVisible && isTabVisible && !isTouchDevice && !prefersReducedMotion) {
+      if (!animationFrameId && isTabVisible && !isTouchDevice && !prefersReducedMotion) {
         animationFrameId = requestAnimationFrame(loop);
       }
     }
@@ -172,9 +245,8 @@
 
     function onMouseMove(e) {
       if (isTouchDevice || prefersReducedMotion) return;
-      var rect = canvas.getBoundingClientRect();
-      mouse.x = e.clientX - rect.left;
-      mouse.y = e.clientY - rect.top;
+      mouse.x = e.clientX;
+      mouse.y = e.clientY;
       mouse.active = true;
       startLoop();
     }
@@ -183,12 +255,12 @@
       mouse.active = false;
       mouse.x = -9999;
       mouse.y = -9999;
+      startLoop(); // allow dots to smoothly transition back to rest
     }
 
     function init() {
       canvas = document.getElementById('hero-dot-grid');
-      heroSection = document.getElementById('intro');
-      if (!canvas || !heroSection) return;
+      if (!canvas) return;
 
       ctx = canvas.getContext('2d');
       if (!ctx) return;
@@ -197,11 +269,12 @@
       resize();
 
       if (!isTouchDevice && !prefersReducedMotion) {
-        heroSection.addEventListener('mousemove', onMouseMove, { passive: true });
-        heroSection.addEventListener('mouseleave', onMouseLeave, { passive: true });
+        window.addEventListener('mousemove', onMouseMove, { passive: true });
+        document.addEventListener('mouseleave', onMouseLeave, { passive: true });
+        window.addEventListener('blur', onMouseLeave, { passive: true });
       }
 
-      // Resize observer or debounced window resize
+      // Resize listener for full-screen dimensions
       var resizeTimeout;
       window.addEventListener('resize', function () {
         clearTimeout(resizeTimeout);
@@ -214,33 +287,29 @@
       // Tab visibility pause
       document.addEventListener('visibilitychange', function () {
         isTabVisible = !document.hidden;
-        if (isTabVisible && isHeroVisible) {
+        if (isTabVisible) {
           startLoop();
         } else {
           stopLoop();
         }
       });
 
-      // IntersectionObserver for Hero off-screen pause
-      if ('IntersectionObserver' in window) {
-        var observer = new IntersectionObserver(function (entries) {
-          entries.forEach(function (entry) {
-            isHeroVisible = entry.isIntersecting;
-            if (isHeroVisible && isTabVisible) {
-              startLoop();
-            } else {
-              stopLoop();
-            }
-          });
-        }, { threshold: 0.05 });
-        observer.observe(heroSection);
-      }
-
       render();
     }
 
     function updateColors() {
       readCSSColors();
+      var baseAlpha = getBaseAlpha();
+      for (var i = 0; i < dots.length; i++) {
+        dots[i].targetR = hairlineColor.r;
+        dots[i].targetG = hairlineColor.g;
+        dots[i].targetB = hairlineColor.b;
+        dots[i].targetAlpha = baseAlpha;
+        dots[i].currentR = hairlineColor.r;
+        dots[i].currentG = hairlineColor.g;
+        dots[i].currentB = hairlineColor.b;
+        dots[i].currentAlpha = baseAlpha;
+      }
       render();
     }
 
