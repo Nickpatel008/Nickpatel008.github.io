@@ -316,6 +316,7 @@
       if (typeof gsap === 'undefined') return;
 
       var words = document.querySelectorAll('.hero-word');
+      var underline = document.querySelector('.hero-accent-underline');
       var fadeItems = document.querySelectorAll('.hero-fade-item');
 
       if (!words.length) return;
@@ -324,14 +325,22 @@
 
       tl.fromTo(words,
         { y: '105%' },
-        { y: '0%', duration: 0.9, stagger: 0.06 }
+        { y: '0%', duration: 0.9, stagger: 0.05 }
       );
+
+      if (underline) {
+        tl.fromTo(underline,
+          { scaleX: 0 },
+          { scaleX: 1, duration: 0.7, ease: 'expo.out' },
+          '-=0.45'
+        );
+      }
 
       if (fadeItems.length) {
         tl.fromTo(fadeItems,
           { y: 16, opacity: 0 },
           { y: 0, opacity: 1, duration: 0.7, stagger: 0.08 },
-          '-=0.45'
+          '-=0.4'
         );
       }
     }

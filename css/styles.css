@@ -351,13 +351,13 @@ button:focus-visible {
 
 .hero-headline {
   font-family: var(--font-sans);
-  font-size: clamp(2.5rem, 7vw, 6.5rem);
-  font-weight: 500;
-  line-height: 1.0;
-  letter-spacing: -0.035em;
+  font-size: clamp(2.75rem, 7.8vw, 6.75rem);
+  font-weight: 600;
+  line-height: 1.02;
+  letter-spacing: -0.038em;
   color: var(--ink);
   margin-bottom: var(--space-6);
-  max-width: 15ch;
+  max-width: 16ch;
   text-wrap: balance;
 }
 
@@ -366,6 +366,33 @@ button:focus-visible {
   font-style: italic;
   font-weight: 400;
   letter-spacing: normal;
+}
+
+.hero-accent-group {
+  position: relative;
+  display: inline-block;
+  white-space: nowrap;
+}
+
+.hero-accent-word {
+  color: var(--accent);
+}
+
+.hero-accent-word em {
+  color: var(--accent);
+}
+
+.hero-accent-underline {
+  position: absolute;
+  left: 0;
+  bottom: 2px;
+  width: 100%;
+  height: 2px;
+  background-color: var(--accent);
+  transform: scaleX(0);
+  transform-origin: left;
+  pointer-events: none;
+  opacity: 0.85;
 }
 
 .hero-word-mask {
@@ -1175,6 +1202,9 @@ body.panel-open {
   }
   .hero-word {
     transform: none !important;
+  }
+  .hero-accent-underline {
+    transform: scaleX(1) !important;
   }
   .hero-fade-item {
     opacity: 1 !important;
