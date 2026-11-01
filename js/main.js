@@ -60,19 +60,23 @@
       dots = [];
       var cols = Math.ceil(width / dotSpacing) + 1;
       var rows = Math.ceil(height / dotSpacing) + 1;
+      var offsetX = (width - (cols - 1) * dotSpacing) / 2;
+      var offsetY = (height - (rows - 1) * dotSpacing) / 2;
+      var isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+      var baseAlpha = isTouchDevice ? 0.25 : (isDark ? 0.42 : 0.40);
 
       for (var r = 0; r < rows; r++) {
         for (var c = 0; c < cols; c++) {
           dots.push({
-            x: c * dotSpacing,
-            y: r * dotSpacing,
+            x: offsetX + c * dotSpacing,
+            y: offsetY + r * dotSpacing,
             currentScale: 1,
             targetScale: 1,
             currentR: hairlineColor.r,
             currentG: hairlineColor.g,
             currentB: hairlineColor.b,
-            currentAlpha: isTouchDevice ? 0.25 : 0.40,
-            targetAlpha: isTouchDevice ? 0.25 : 0.40
+            currentAlpha: baseAlpha,
+            targetAlpha: baseAlpha
           });
         }
       }
@@ -102,7 +106,8 @@
       var height = canvas.height / (Math.min(window.devicePixelRatio || 1, 2));
       ctx.clearRect(0, 0, width, height);
 
-      var baseAlpha = isTouchDevice ? 0.25 : 0.40;
+      var isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+      var baseAlpha = isTouchDevice ? 0.25 : (isDark ? 0.42 : 0.40);
 
       for (var i = 0; i < dots.length; i++) {
         var dot = dots[i];
@@ -134,11 +139,18 @@
           dot.currentB += (dot.targetB - dot.currentB) * 0.12;
           dot.currentAlpha += (dot.targetAlpha - dot.currentAlpha) * 0.12;
         } else {
-          dot.currentScale = 1;
-          dot.currentR = hairlineColor.r;
-          dot.currentG = hairlineColor.g;
-          dot.currentB = hairlineColor.b;
-          dot.currentAlpha = baseAlpha;
+          dot.targetScale = 1;
+          dot.targetR = hairlineColor.r;
+          dot.targetG = hairlineColor.g;
+          dot.targetB = hairlineColor.b;
+          dot.targetAlpha = baseAlpha;
+
+          // Smooth return to resting state
+          dot.currentScale += (1 - dot.currentScale) * 0.12;
+          dot.currentR += (hairlineColor.r - dot.currentR) * 0.12;
+          dot.currentG += (hairlineColor.g - dot.currentG) * 0.12;
+          dot.currentB += (hairlineColor.b - dot.currentB) * 0.12;
+          dot.currentAlpha += (baseAlpha - dot.currentAlpha) * 0.12;
         }
 
         ctx.beginPath();
@@ -154,7 +166,22 @@
         return;
       }
       render();
-      animationFrameId = requestAnimationFrame(loop);
+
+      var animating = mouse.active;
+      if (!animating) {
+        for (var i = 0; i < dots.length; i++) {
+          if (Math.abs(dots[i].currentScale - 1) > 0.01) {
+            animating = true;
+            break;
+          }
+        }
+      }
+
+      if (animating) {
+        animationFrameId = requestAnimationFrame(loop);
+      } else {
+        animationFrameId = null;
+      }
     }
 
     function startLoop() {
@@ -192,6 +219,7 @@
       mouse.active = false;
       mouse.x = -9999;
       mouse.y = -9999;
+      startLoop();
     }
 
     function init() {
@@ -259,6 +287,18 @@
 
     function updateColors() {
       readCSSColors();
+      var isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+      var baseAlpha = isTouchDevice ? 0.25 : (isDark ? 0.42 : 0.40);
+      for (var i = 0; i < dots.length; i++) {
+        dots[i].targetR = hairlineColor.r;
+        dots[i].targetG = hairlineColor.g;
+        dots[i].targetB = hairlineColor.b;
+        dots[i].targetAlpha = baseAlpha;
+        dots[i].currentR = hairlineColor.r;
+        dots[i].currentG = hairlineColor.g;
+        dots[i].currentB = hairlineColor.b;
+        dots[i].currentAlpha = baseAlpha;
+      }
       render();
     }
 

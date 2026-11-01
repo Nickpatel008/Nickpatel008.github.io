@@ -88,44 +88,51 @@
   <!-- ===================================================================
        MAIN CONTENT CONTAINER
        =================================================================== -->
-  <main class="layout-root" id="main-content">
+  <main id="main-content">
 
     <!-- -----------------------------------------------------------------
-         4.2 HERO SECTION (01 / INTRO)
+         4.2 HERO SECTION (01 / INTRO) - Full-Width Edge-to-Edge Canvas
          ----------------------------------------------------------------- -->
     <section class="hero-section" id="intro" aria-label="Introduction">
       <canvas id="hero-dot-grid" class="hero-canvas-bg" aria-hidden="true"></canvas>
 
-      <div class="two-lane-grid hero-content">
-        <div class="lane-left">
-          <div class="mono-label">01 / INTRO</div>
-        </div>
-
-        <div class="lane-right">
-          <h1 class="hero-headline"><span class="hero-word-mask"><span class="hero-word">Full-stack</span></span> <span class="hero-word-mask"><span class="hero-word">engineer</span></span> <span class="hero-word-mask"><span class="hero-word">building</span></span> <span class="hero-word-mask"><span class="hero-word">ERP</span></span> <span class="hero-word-mask"><span class="hero-word">systems</span></span> <span class="hero-word-mask"><span class="hero-word">that</span></span> <span class="hero-word-mask"><span class="hero-word">stay</span></span> <span class="hero-word-mask"><span class="hero-word"><em>accurate</em></span></span> <span class="hero-word-mask"><span class="hero-word">under</span></span> <span class="hero-word-mask"><span class="hero-word">load.</span></span></h1>
-
-          <p class="hero-sub hero-fade-item">
-            Project lead on two ERPs. Node.js, TypeScript, PostgreSQL, Next.js. Based in Surat, India.
-          </p>
-
-          <div class="hero-actions hero-fade-item">
-            <a href="mailto:dpatel0254@gmail.com" class="btn-solid">Get in touch</a>
-            <a href="#work" class="btn-text-draw">View work &darr;</a>
+      <div class="hero-content-wrap">
+        <div class="two-lane-grid hero-content">
+          <div class="lane-left">
+            <div class="mono-label">01 / INTRO</div>
           </div>
 
-          <div class="readouts-row hero-fade-item" aria-label="Key engineering metrics">
-            <div class="readout-item">200+ ENDPOINTS LOAD-TESTED</div>
-            <div class="readout-item">28 FLAGGED AS TIMEOUT RISKS</div>
-            <div class="readout-item">2 ERPS LED</div>
+          <div class="lane-right">
+            <h1 class="hero-headline"><span class="hero-word-mask"><span class="hero-word">Full-stack</span></span> <span class="hero-word-mask"><span class="hero-word">engineer</span></span> <span class="hero-word-mask"><span class="hero-word">building</span></span> <span class="hero-word-mask"><span class="hero-word">ERP</span></span> <span class="hero-word-mask"><span class="hero-word">systems</span></span> <span class="hero-word-mask"><span class="hero-word">that</span></span> <span class="hero-word-mask"><span class="hero-word">stay</span></span> <span class="hero-word-mask"><span class="hero-word"><em>accurate</em></span></span> <span class="hero-word-mask"><span class="hero-word">under</span></span> <span class="hero-word-mask"><span class="hero-word">load.</span></span></h1>
+
+            <p class="hero-sub hero-fade-item">
+              Project lead on two ERPs. Node.js, TypeScript, PostgreSQL, Next.js. Based in Surat, India.
+            </p>
+
+            <div class="hero-actions hero-fade-item">
+              <a href="mailto:dpatel0254@gmail.com" class="btn-solid">Get in touch</a>
+              <a href="#work" class="btn-text-draw">View work &darr;</a>
+            </div>
+
+            <div class="readouts-row hero-fade-item" aria-label="Key engineering metrics">
+              <div class="readout-item">200+ ENDPOINTS LOAD-TESTED</div>
+              <div class="readout-item">28 FLAGGED AS TIMEOUT RISKS</div>
+              <div class="readout-item">2 ERPS LED</div>
+            </div>
           </div>
         </div>
       </div>
     </section>
 
     <!-- -----------------------------------------------------------------
-         4.3 WORK INDEX (02 / SELECTED WORK)
+         PAGE BODY CONTAINER (12-Column Layout Grid)
          ----------------------------------------------------------------- -->
-    <section class="section-block" id="work" aria-label="Selected Work">
+    <div class="layout-root">
+
+      <!-- -----------------------------------------------------------------
+           4.3 WORK INDEX (02 / SELECTED WORK)
+           ----------------------------------------------------------------- -->
+      <section class="section-block" id="work" aria-label="Selected Work">
       <div class="two-lane-grid">
         <div class="lane-left">
           <div class="mono-label">02 / SELECTED WORK</div>
@@ -255,6 +262,8 @@
         </div>
       </div>
     </section>
+
+    </div><!-- /.layout-root -->
 
   </main>
 

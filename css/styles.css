@@ -315,6 +315,7 @@ button:focus-visible {
    5. Hero Section (Fits 1440x900 & 390x844 Viewports Without Scrolling)
    -------------------------------------------------------------------------- */
 .hero-section {
+  width: 100%;
   min-height: 100svh;
   display: flex;
   flex-direction: column;
@@ -335,9 +336,17 @@ button:focus-visible {
   z-index: 0;
 }
 
-.hero-content {
+.hero-content-wrap {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 var(--gutter);
   position: relative;
   z-index: 1;
+}
+
+.hero-content {
+  position: relative;
 }
 
 .hero-headline {
