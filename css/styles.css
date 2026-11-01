@@ -271,8 +271,6 @@ button:focus-visible {
    4. Macro Grid & Layout (12 Columns / Two-Lane)
    -------------------------------------------------------------------------- */
 .layout-root {
-  position: relative;
-  z-index: 1;
   max-width: 1200px;
   margin: 0 auto;
   padding: 0 var(--gutter);
@@ -324,17 +322,15 @@ button:focus-visible {
   position: relative;
   padding-top: clamp(80px, 9vh, 100px);
   padding-bottom: 80px;
+  overflow: hidden;
 }
 
-.particle-canvas-bg,
 .hero-canvas-bg {
-  position: fixed;
+  position: absolute;
   top: 0;
   left: 0;
-  width: 100vw;
-  height: 100vh;
-  width: 100svw;
-  height: 100svh;
+  width: 100%;
+  height: 100%;
   pointer-events: none;
   z-index: 0;
 }
