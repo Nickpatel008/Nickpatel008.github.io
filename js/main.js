@@ -372,10 +372,10 @@
         var isDark = document.documentElement.getAttribute('data-theme') === 'dark';
         if (isDark) {
           document.documentElement.removeAttribute('data-theme');
-          try { localStorage.setItem('dhaval_theme', 'light'); } catch (e) {}
+          try { localStorage.setItem('dhaval_theme_v2', 'light'); } catch (e) {}
         } else {
           document.documentElement.setAttribute('data-theme', 'dark');
-          try { localStorage.setItem('dhaval_theme', 'dark'); } catch (e) {}
+          try { localStorage.setItem('dhaval_theme_v2', 'dark'); } catch (e) {}
         }
         updateLabel();
       });
